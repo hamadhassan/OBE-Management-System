@@ -1,0 +1,21 @@
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\bin\Debug\net6.0-windows\CS-263 ProjectCLOs.exe
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\bin\Debug\net6.0-windows\CS-263 ProjectCLOs.deps.json
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\bin\Debug\net6.0-windows\CS-263 ProjectCLOs.runtimeconfig.json
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\bin\Debug\net6.0-windows\CS-263 ProjectCLOs.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\bin\Debug\net6.0-windows\CS-263 ProjectCLOs.pdb
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.csproj.AssemblyReference.cache
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\App.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs_MarkupCompile.cache
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs_MarkupCompile.lref
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\MainWindow.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.g.resources
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.GeneratedMSBuildEditorConfig.editorconfig
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.AssemblyInfoInputs.cache
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.AssemblyInfo.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.csproj.CoreCompileInputs.cache
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\refint\CS-263 ProjectCLOs.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.pdb
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\CS-263 ProjectCLOs.genruntimeconfig.cache
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\CS-263 ProjectCLOs\obj\Debug\net6.0-windows\ref\CS-263 ProjectCLOs.dll

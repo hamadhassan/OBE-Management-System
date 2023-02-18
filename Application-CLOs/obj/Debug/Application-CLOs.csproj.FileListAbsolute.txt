@@ -18,3 +18,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\AddStudent.g.c
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Home.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\AddStudent.baml
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Home.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\ViewStudent.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\ViewStudent.baml

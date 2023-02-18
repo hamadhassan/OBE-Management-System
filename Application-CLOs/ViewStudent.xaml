@@ -1,0 +1,38 @@
+﻿<Window x:Class="Application_CLOs.ViewStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application_CLOs"
+        mc:Ignorable="d"
+        Title="ViewStudents" Height="480" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblFirstName" Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxFirstName" HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="Enter First Name" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="lblSignalFirstName" Content="1-" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblLastName" Content="Last Name" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxLastName" HorizontalAlignment="Left" Margin="10,103,0,0" TextWrapping="Wrap" Text="Enter Last Name" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="lblLastName1" Content="1-" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblRegistrationNumber" Content="Registration Number" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxRegistrationNumber" HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" Text="Enter Registration Number" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="lblSignalRegistrationNumber" Content="1-" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblContact" Content="Contact" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxContact" HorizontalAlignment="Left" Margin="10,239,0,0" TextWrapping="Wrap" Text="Enter Contact Number" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="lblSignalContact" Content="1-" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxEmail" HorizontalAlignment="Left" Margin="10,310,0,0" TextWrapping="Wrap" Text="Enter Email Address" VerticalAlignment="Top" Width="150"/>
+        <Label x:Name="lblSignalEmail" Content="1-" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="14,356,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSignalStatus" Content="1-" HorizontalAlignment="Left" Margin="14,403,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbxStatus" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox HorizontalAlignment="Left" Margin="185,36,0,0" TextWrapping="Wrap" Text="Search Here" VerticalAlignment="Top" Width="410"/>
+        <DataGrid x:Name="dg" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="185,82,10,35"/>
+        <Button x:Name="btnAdd" Content="Close" HorizontalAlignment="Left" Margin="730,36,0,0" VerticalAlignment="Top" Height="23" Width="60" Background="#FF1D147F" Foreground="White" BorderBrush="Black"/>
+        <Button x:Name="btnAdd_Copy" Content="Delete" HorizontalAlignment="Left" Margin="665,36,0,0" VerticalAlignment="Top" Height="23" Width="60" Background="#FF1D147F" Foreground="White" BorderBrush="Black"/>
+        <Button x:Name="btnAdd_Copy1" Content="Save" HorizontalAlignment="Left" Margin="600,36,0,0" VerticalAlignment="Top" Height="23" Width="60" Background="#FF1D147F" Foreground="White" BorderBrush="Black"/>
+
+    </Grid>
+</Window>

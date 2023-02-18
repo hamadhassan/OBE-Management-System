@@ -35,5 +35,36 @@ namespace Application_CLOs
         {
             this.Show();
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddStudent addStudent=new AddStudent();
+            addStudent.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            ViewStudent viewStudent=new ViewStudent();
+            viewStudent.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            ViewStudent viewStudent=new ViewStudent();
+            viewStudent.ShowDialog();
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            ViewStudent viewStudent = new ViewStudent();
+            viewStudent.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            ViewStudent viewStudent = new ViewStudent();
+            viewStudent.ShowDialog();
+
+        }
     }
 }

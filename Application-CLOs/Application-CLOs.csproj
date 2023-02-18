@@ -69,6 +69,9 @@
     <Compile Include="StudentDashboard.xaml.cs">
       <DependentUpon>StudentDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewStudent.xaml.cs">
+      <DependentUpon>ViewStudent.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudentDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

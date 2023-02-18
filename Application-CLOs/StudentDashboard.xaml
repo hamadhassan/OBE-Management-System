@@ -47,6 +47,7 @@
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="750,369,0,0" VerticalAlignment="Top" Height="25" Width="55" Background="#FF1D147F" Foreground="White" BorderBrush="Black" Click="btnDelete_Click"/>
         <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Margin="830,369,0,0" VerticalAlignment="Top" Height="25" Width="55" Background="#FF1D147F" Foreground="White" BorderBrush="Black" Click="btnView_Click"/>
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="750,404,0,0" VerticalAlignment="Top" Height="25" Width="135" Background="#FF5046B9" Foreground="White" BorderBrush="Black" Click="btnSearch_Click"/>
+        <Button x:Name="btnSetRules" Content="Set Rules" Margin="10,404,0,0" Background="#FF5046B9" Foreground="White" Click="btnSetRules_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="30"/>
 
     </Grid>
 

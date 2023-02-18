@@ -90,8 +90,8 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="39*"/>
-            <RowDefinition Height="425*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="415*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -99,14 +99,14 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="99*"/>
-                <ColumnDefinition Width="35*"/>
-                <ColumnDefinition Width="26*"/>
+                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnClose" Grid.Column="2" Content="Close" Margin="25,10,15,5" Height="24" Width="90" Background="#FFC82530" Foreground="White"/>
-            <TextBox x:Name="txtbxSearch" Margin="10,15,10,0" TextWrapping="Wrap" Text="Search Here" Width="650" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnClose" Grid.Column="2" Content="Close" Margin="20,10,0,0" Height="24" Width="90" Background="#FFC82530" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnClose_Click"/>
+            <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Text="Search Here" Width="624" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="18"/>
 
         </Grid>
-        <DataGrid x:Name="dgStudent" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <DataGrid x:Name="dgStudent" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,44,0,0" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Edit">
                     <DataGridTemplateColumn.CellTemplate>

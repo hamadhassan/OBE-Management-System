@@ -76,5 +76,11 @@ namespace Application_CLOs
             string firstName = cmd.ExecuteScalar().ToString();
             lblCountTotalStudent.Content = firstName;
         }
+
+        private void btnSetRules_Click(object sender, RoutedEventArgs e)
+        {
+            Lookup lookup = new Lookup();
+            lookup.ShowDialog();
+        }
     }
 }

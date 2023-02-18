@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="Student" MinWidth="930" MinHeight="540" Height="540" Width="900" WindowStartupLocation="CenterScreen">
+        Title="Student" MinWidth="930" MinHeight="540" Height="540" Width="900" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid Height="524" VerticalAlignment="Bottom">
         <Grid.RowDefinitions>
             <RowDefinition Height="21*"/>
@@ -106,16 +106,16 @@
                 <RowDefinition Height="17*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="1" >
-                <Button x:Name="btnClearAll" Content="Clear All" Width="120" Height="35" Background="#FFFF9679" Foreground="Black" BorderBrush="Black"/>
+                <Button x:Name="btnClearAll" Content="Clear All" Width="120" Height="35" Background="#FFFF9679" Foreground="Black" BorderBrush="Black" Click="btnClearAll_Click"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="2">
-                <Button x:Name="btnView" Content="View" Width="120" Height="35" Background="#FF01565B" BorderBrush="Black" Foreground="White"/>
+                <Button x:Name="btnView" Content="View" Width="120" Height="35" Background="#FF01565B" BorderBrush="Black" Foreground="White" Click="btnView_Click"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="3">
                 <Button x:Name="btnClose" Content="Close" Width="120" Height="35" Background="#FFC82530" Foreground="White" Click="btnClose_Click" BorderBrush="Black"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="4" >
-                <Button x:Name="btnSave" Content="Save" Width="120" Height="35" Background="#FF5ABA26" Foreground="White" Click="btnSave_Click" BorderBrush="Black"/>
+                <Button x:Name="btnSave" Content="Save" Width="120" Height="35" Background="#FF357712" Foreground="White" Click="btnSave_Click" BorderBrush="Black"/>
             </StackPanel>
         </Grid>
 

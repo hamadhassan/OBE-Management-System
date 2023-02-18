@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,15 @@ namespace Application_CLOs
             ViewStudent viewStudent = new ViewStudent();
             viewStudent.ShowDialog();
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var con = Configuration.getInstance().getConnection();
+            string query = "SELECT COUNT(S.RegistrationNumber) FROM student S";
+            SqlCommand cmd = new SqlCommand(query, con);
+            string firstName = cmd.ExecuteScalar().ToString();
+            lblCountTotalStudent.Content = firstName;
         }
     }
 }

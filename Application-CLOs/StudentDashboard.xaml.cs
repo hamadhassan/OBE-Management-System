@@ -70,13 +70,20 @@ namespace Application_CLOs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var con = Configuration.getInstance().getConnection();
             string query = "SELECT COUNT(S.RegistrationNumber) FROM student S";
-            SqlCommand cmd = new SqlCommand(query, con);
-            string firstName = cmd.ExecuteScalar().ToString();
-            lblCountTotalStudent.Content = firstName;
+            lblCountTotalStudent.Content = queryData(query);
+            query = "SELECT COUNT(L.Name) FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS' AND L.Name='Active'";
+            lblCountActive.Content= queryData(query);
+            query = "SELECT COUNT(L.Name) FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS' AND L.Name='InActive'";
+            lblCountInactive.Content= queryData(query);
         }
-
+        private string queryData(string query)
+        {
+            var con = Configuration.getInstance().getConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            string output = cmd.ExecuteScalar().ToString();
+            return output;
+        }
         private void btnSetRules_Click(object sender, RoutedEventArgs e)
         {
             Lookup lookup = new Lookup();

@@ -31,7 +31,7 @@ namespace Application_CLOs
         private void bindDataGrid()
         {
             var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM student S", con);
+            SqlCommand cmd = new SqlCommand("SELECT S.Id,S.FirstName,S.LastName,S.Contact,S.Email,S.RegistrationNumber,L.Name AS 'Status' FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -59,7 +59,9 @@ namespace Application_CLOs
             string contact = dataRowView[3].ToString();
             string email=dataRowView[4].ToString();
             string RegistrationNumber = dataRowView[5].ToString();
-            int status =int.Parse(dataRowView[6].ToString());
+            string status =dataRowView[6].ToString();
+            AddStudent addStudent = new AddStudent(id,firstName,lastName,contact,email,RegistrationNumber,status);
+            addStudent.ShowDialog();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

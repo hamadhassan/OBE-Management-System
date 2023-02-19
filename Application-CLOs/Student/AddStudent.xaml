@@ -1,0 +1,126 @@
+﻿<Window x:Class="Application_CLOs.AddStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application_CLOs"
+        mc:Ignorable="d"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Student" MinWidth="930" MinHeight="540" Height="540" Width="900" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded_1">
+    <Grid Height="524" VerticalAlignment="Bottom">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="21*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,20" Width="176">
+            <Label x:Name="lblAddStudent" Content="Add New Student" Width="288" FontWeight="Bold"  FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Margin="0,9,0,1" Orientation="Horizontal" HorizontalAlignment="Center" Width="0"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="67*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="8*"/>
+
+                <!--First Line-->
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label x:Name="lblFirstName" Content="First Name *" Margin="150,0,0,0" Width="95" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Label x:Name="lblLastName" Content="Last Name *" Margin="30,0,0,0" Width="95" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Label x:Name="lblRegistrationNumber" Content="Registration Number *" Margin="30,0,0,0" Width="132" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Margin="0,0,0,32">
+                <TextBox x:Name="txtbxFirstName" Margin="150,0,0,0" Width="150" HorizontalAlignment="Left" GotFocus="txtbxFirstName_GotFocus" LostFocus="txtbxFirstName_LostFocus" TextChanged="txtbxFirstName_TextChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Margin="0,0,0,32">
+                <TextBox x:Name="txtbxLastName" Margin="30,0,0,0" Width="150" HorizontalAlignment="Left" GotFocus="txtbxLastName_GotFocus" LostFocus="txtbxLastName_LostFocus" TextChanged="txtbxLastName_TextChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Margin="0,0,0,32">
+                <TextBox x:Name="txtbxRegisrationNumber" Margin="30,0,0,0" Width="150" HorizontalAlignment="Left" GotFocus="txtbxRegisrationNumber_GotFocus" LostFocus="txtbxRegisrationNumber_LostFocus" TextChanged="txtbxRegisrationNumber_TextChanged"/>
+            </StackPanel>
+            <!--Signal Firt Line-->
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Margin="0,0,0,32">
+                <Label x:Name="lblSignalFirstName" Content="" Margin="150,-25,0,0" Width="150" HorizontalAlignment="Left" Foreground="#FFC82530"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="1">
+                <Label x:Name="lblSignalLastName" Content="" Margin="30,-25,0,0" Width="150" HorizontalAlignment="Left" Foreground="#FFC82530"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="2">
+                <Label x:Name="lblSignalRegistrationNumber" Content="" Margin="30,-25,0,0" Width="150" HorizontalAlignment="Left" Foreground="#FFC82530"/>
+            </StackPanel>
+            <!--Second Line-->
+            <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,8,0,32" Grid.RowSpan="2">
+                <Label x:Name="lblContact" Content="Contact *" Margin="150,0,0,0" Width="95" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,8,0,32" Grid.RowSpan="2">
+                <Label x:Name="lblEmail" Content="Email Name *" Margin="30,0,0,0" Width="95" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="2" Margin="0,8,0,32" Grid.RowSpan="2">
+                <Label x:Name="lblStatus" Content="Status *" Margin="30,0,0,0" Width="132" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.RowSpan="2">
+                <TextBox x:Name="txtbxContact" Margin="150,0,0,0" Width="150" HorizontalAlignment="Left" GotFocus="txtbxContact_GotFocus" LostFocus="txtbxContact_LostFocus" TextChanged="txtbxContact_TextChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="2">
+                <TextBox x:Name="txtbxEmail" Margin="30,0,0,0" Width="150" HorizontalAlignment="Left" GotFocus="txtbxEmail_GotFocus" LostFocus="txtbxEmail_LostFocus" TextChanged="txtbxEmail_TextChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="2" Grid.RowSpan="2">
+                <ComboBox x:Name="cmbxStatus" Text="Enter RegistrationNumber" Margin="30,0,0,0" Width="150" HorizontalAlignment="Left" BorderBrush="White" Background="White"/>
+            </StackPanel>
+            <!--Signal Second Line-->
+            <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,32,0,0" Grid.RowSpan="2">
+                <Label x:Name="lblSignalContact" Content="" Margin="150,-20,0,0" Width="150" HorizontalAlignment="Left" Foreground="#FFC82530"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,32,0,0" Grid.RowSpan="2">
+                <Label x:Name="lblSignalEmail" Content="" Margin="30,-20,0,0" Width="150" HorizontalAlignment="Left" Foreground="#FFC82530"/>
+                <Label x:Name="lblMessage" Content="" Width="485"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="2" Margin="0,32,0,0" Grid.RowSpan="2">
+                <Label x:Name="lblSignalStatus" Content="" Margin="30,-20,0,0" Width="132" HorizontalAlignment="Left" Foreground="#FFC82530"/>
+            </StackPanel>
+        </Grid>
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="17*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="1" >
+                <Button x:Name="btnClearAll" Content="Clear All" Width="120" Height="35" Background="#FFFF9679" Foreground="Black" BorderBrush="Black" Click="btnClearAll_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Button x:Name="btnView" Content="View" Width="120" Height="35" Background="#FF01565B" BorderBrush="Black" Foreground="White" Click="btnView_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="3">
+                <Button x:Name="btnClose" Content="Close" Width="120" Height="35" Background="#FFC82530" Foreground="White" Click="btnClose_Click" BorderBrush="Black"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="4" >
+                <Button x:Name="btnSave" Content="Save" Width="120" Height="35" Background="#FF357712" Foreground="White" Click="btnSave_Click" BorderBrush="Black"/>
+            </StackPanel>
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1"/>
+
+    </Grid>
+</Window>

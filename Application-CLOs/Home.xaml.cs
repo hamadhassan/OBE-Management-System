@@ -34,5 +34,11 @@ namespace Application_CLOs
         {
             this.Show();
         }
+
+        private void btnCLOs_Click(object sender, RoutedEventArgs e)
+        {
+            AddCLOs addCLOs = new AddCLOs();
+            addCLOs.ShowDialog();
+        }
     }
 }

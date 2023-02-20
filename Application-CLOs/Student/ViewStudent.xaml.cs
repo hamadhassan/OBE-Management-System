@@ -25,20 +25,20 @@ namespace Application_CLOs
         public ViewStudent()
         {
             InitializeComponent();
-            bindDataGrid();
+           
         }
        
         private void bindDataGrid()
         {
             var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT S.Id,S.FirstName,S.LastName,S.Contact,S.Email,S.RegistrationNumber,L.Name AS 'Status' FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS'", con);
+            SqlCommand cmd = new SqlCommand("SELECT S.id,S.FirstName,S.lastname,S.Contact,S.email,S.RegistrationNumber,L.Name AS Status FROM Student S JOIN Lookup  L ON L.LookupId=S.Status WHERE  L.Category='STUDENT_STATUS'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgStudent.ItemsSource = dt.DefaultView;
             //if (dgStudent.Columns.Count > 1)
             //{
-            //    dgStudent.Columns[2].Visibility = Visibility.Collapsed;
+            //    dgStudent.Columns[2].Visibility = Visibility.Hidden;
             //}
         }
         public void UpdateDataGrid()
@@ -75,8 +75,8 @@ namespace Application_CLOs
                     var con = Configuration.getInstance().getConnection();
                     SqlCommand cmd = new SqlCommand("delete from student where id='" + id.ToString() + "'", con);
                     cmd.ExecuteNonQuery();
+                    bindDataGrid();
                 }
-                bindDataGrid();
             }
             catch
             {
@@ -95,6 +95,16 @@ namespace Application_CLOs
         }
 
         private void Window_Activated(object sender, EventArgs e)
+        {
+            bindDataGrid();
+        }
+
+        private void txtbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void btnLoadData_Click(object sender, RoutedEventArgs e)
         {
             bindDataGrid();
         }

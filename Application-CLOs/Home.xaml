@@ -26,7 +26,7 @@
                 <Button x:Name="btnStudent" Content="Student" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnStudent_Click"/>
                 <Button x:Name="btnAttendance" Content="Attendance" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
                 <Button x:Name="btnResult" Content="Result" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
-                <Button x:Name="btnCLOs" Content="CLOs" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
+                <Button x:Name="btnCLOs" Content="CLOs" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnCLOs_Click"/>
 
             </StackPanel>
 

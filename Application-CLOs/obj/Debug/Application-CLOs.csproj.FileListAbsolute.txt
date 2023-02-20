@@ -41,3 +41,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\ru\Xceed.Wpf.A
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Application-CLOs.csproj.CopyComplete
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\CLOs\AddCLOs.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\CLOs\AddCLOs.baml

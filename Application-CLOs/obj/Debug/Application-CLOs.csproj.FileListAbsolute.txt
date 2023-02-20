@@ -43,3 +43,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\zh-Hans\Xceed.
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Application-CLOs.csproj.CopyComplete
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\CLOs\AddCLOs.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\CLOs\AddCLOs.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\AddRubric.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\AddRubric.baml

@@ -94,30 +94,44 @@ namespace Application_CLOs
                 string query = "SELECT ID FROM CLO WHERE Name='" + cmbxCLO.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 int cloID = int.Parse(cmd.ExecuteScalar().ToString());
+                con.Close();
                 /// This command retrive the rubric id
                 /// IF THE Rrubric id is exist display message the data already exist
                 /// ELSE store thr data into the database with the increase in the id count
+                var con1 = Configuration.getInstance().getConnection();
+                con1.Open();
                 string query1 = "SELECT R.Id FROM Rubric R WHERE R.Details='"+cmbxCLO.Text+"' AND R.CloId="+cloID+" \r\n";
-                SqlCommand cmd1 = new SqlCommand(query1, con);
+                SqlCommand cmd1 = new SqlCommand(query1, con1);
                 object result = cmd1.ExecuteScalar();
+                con1.Close();
                 if (result == null || result == DBNull.Value)
                 {
-                    lblMessage.Content = "The rubric is already exist";
-                }
-                else
-                {
+                    var con2 = Configuration.getInstance().getConnection();
+                    con1.Open();
                     string query2 = "SELECT TOP 1 R.ID FROM Rubric R ORDER BY R.Id DESC \r\n";
-                    SqlCommand cmd2 = new SqlCommand(query2, con);
+                    SqlCommand cmd2 = new SqlCommand(query2, con2);
                     int rubricID = int.Parse(cmd2.ExecuteScalar().ToString());
                     rubricID += 1;
+                    con1.Close();
                     //// Now the input data will be stored into the database
-                    SqlCommand cmd3 = new SqlCommand("INSERT into RUBRIC values  ("+rubricID+",@Detail, "+cloID +")", con);
+                    var con3 = Configuration.getInstance().getConnection();
+                    con3.Open();
+                    SqlCommand cmd3 = new SqlCommand("INSERT into RUBRIC values  (" + rubricID + ",@Detail, " + cloID + ")", con3);
                     cmd3.Parameters.AddWithValue("@Detail", txtbxDetail.Text);
                     cmd3.ExecuteNonQuery();
                     lblMessage.Content = "Data Successfully Saved";
                     bindDataGrid();
                 }
+                else
+                {
+                    lblMessage.Content = "The rubric is already exist";
+                }
             }
+            else
+            {
+                lblMessage.Content = "You data is not saved";
+            }
+
 
         }
 

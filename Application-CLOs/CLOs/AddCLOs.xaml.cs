@@ -37,7 +37,6 @@ namespace Application_CLOs
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgCLOs.ItemsSource = dt.DefaultView;
-
         }
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {

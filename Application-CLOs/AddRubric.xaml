@@ -90,10 +90,10 @@
                 <TextBox x:Name="txtbxDetail" TextWrapping="Wrap" Width="203" Height="70" Margin="2" TextChanged="txtbxName_TextChanged"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="0,80,0,0" Grid.RowSpan="2">
-                <Label x:Name="lblSignalDetail" Content="abc" Foreground="#FFC82530"/>
+                <Label x:Name="lblSignalDetail" Content="" Foreground="#FFC82530"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="0,30,0,0" Grid.RowSpan="2">
-                <Label x:Name="lblMessage" Content="abc" Foreground="#FFC82530"/>
+                <Label x:Name="lblMessage" Content="" Foreground="#FFC82530"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <ComboBox x:Name="cmbxCLO" Width="202" BorderBrush="White">

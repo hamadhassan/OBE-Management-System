@@ -83,7 +83,6 @@ namespace Application_CLOs
                 MessageBox.Show("You are trying to access the wrong field", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
            
@@ -94,33 +93,25 @@ namespace Application_CLOs
                 string query = "SELECT ID FROM CLO WHERE Name='" + cmbxCLO.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 int cloID = int.Parse(cmd.ExecuteScalar().ToString());
-                con.Close();
                 /// This command retrive the rubric id
                 /// IF THE Rrubric id is exist display message the data already exist
                 /// ELSE store thr data into the database with the increase in the id count
-                var con1 = Configuration.getInstance().getConnection();
-                con1.Open();
-                string query1 = "SELECT R.Id FROM Rubric R WHERE R.Details='"+cmbxCLO.Text+"' AND R.CloId="+cloID+" \r\n";
-                SqlCommand cmd1 = new SqlCommand(query1, con1);
+                string query1 = "SELECT R.Id FROM Rubric R WHERE R.Details='"+cmbxCLO.Text+"' AND R.CloId="+ cloID+ " \r\n";
+                SqlCommand cmd1 = new SqlCommand(query1, con);
                 object result = cmd1.ExecuteScalar();
-                con1.Close();
                 if (result == null || result == DBNull.Value)
                 {
-                    var con2 = Configuration.getInstance().getConnection();
-                    con1.Open();
                     string query2 = "SELECT TOP 1 R.ID FROM Rubric R ORDER BY R.Id DESC \r\n";
-                    SqlCommand cmd2 = new SqlCommand(query2, con2);
+                    SqlCommand cmd2 = new SqlCommand(query2, con);
                     int rubricID = int.Parse(cmd2.ExecuteScalar().ToString());
                     rubricID += 1;
-                    con1.Close();
                     //// Now the input data will be stored into the database
-                    var con3 = Configuration.getInstance().getConnection();
-                    con3.Open();
-                    SqlCommand cmd3 = new SqlCommand("INSERT into RUBRIC values  (" + rubricID + ",@Detail, " + cloID + ")", con3);
+                    SqlCommand cmd3 = new SqlCommand("INSERT into RUBRIC values  (" + rubricID + ",@Detail, " + cloID + ")", con);
                     cmd3.Parameters.AddWithValue("@Detail", txtbxDetail.Text);
                     cmd3.ExecuteNonQuery();
                     lblMessage.Content = "Data Successfully Saved";
                     bindDataGrid();
+                    ClearAllFields();
                 }
                 else
                 {
@@ -141,13 +132,18 @@ namespace Application_CLOs
             {
                 if (ValidateName(txtbxDetail.Text) == true)
                 {
+                    /// This command retrive the CLO ID corresponding to the name of the clo
                     var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd1 = new SqlCommand("Update CLO SET Name=@Name,DateUpdated=GETDATE() WHERE ID='" + id_ + "'", con);
-                    cmd1.Parameters.AddWithValue("@Name", txtbxDetail.Text);
+                    string query = "SELECT ID FROM CLO WHERE Name='" + cmbxCLO.Text + "'";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int cloID = int.Parse(cmd.ExecuteScalar().ToString());
+                    SqlCommand cmd1 = new SqlCommand("Update RUBRIC SET Details=@Details,CLOID="+ cloID + " WHERE ID='" + id_ + "'", con);
+                    cmd1.Parameters.AddWithValue("@Details", txtbxDetail.Text);
                     cmd1.ExecuteNonQuery();
                     lblSignalDetail.Content = "Data Successfully Updated";
                     txtbxDetail.Clear();
                     bindDataGrid();
+                    ClearAllFields();
                 }
             }
             else
@@ -158,7 +154,7 @@ namespace Application_CLOs
         }
         public bool ValidateName(string name)
         {
-            string pattern = "^[a-zA-Z0-9]{2,49}$";
+            string pattern = "^[a-zA-Z0-9 ]{2,49}$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(name);
         }
@@ -181,10 +177,15 @@ namespace Application_CLOs
             this.Close();
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void ClearAllFields()
         {
             txtbxDetail.Clear();
+            cmbxCLO.SelectedIndex = 0;
             id_ = -1;
+        }
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAllFields();
         }
 
         private void txtbxName_TextChanged(object sender, TextChangedEventArgs e)

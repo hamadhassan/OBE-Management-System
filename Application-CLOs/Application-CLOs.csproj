@@ -73,6 +73,9 @@
     <Compile Include="AddRubric.xaml.cs">
       <DependentUpon>AddRubric.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddRubricLevel.xaml.cs">
+      <DependentUpon>AddRubricLevel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CLOs\AddCLOs.xaml.cs">
       <DependentUpon>AddCLOs.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddRubric.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRubricLevel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

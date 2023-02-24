@@ -24,6 +24,8 @@ namespace Application_CLOs
     public partial class AddRubricLevel : Window
     {
         int id_ = 0;
+        string detailsForUpdate;
+        int marksForUpdate;
         public AddRubricLevel()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace Application_CLOs
         private void bindDataGrid()
         {
             var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT RL.Id,RL.Details As [Rubric Detail],RL.MeasurementLevel AS [Marks] ,C.Name AS[CLO Name],R.Details AS [Rubric Name]\r\nFROM RubricLevel RL\r\nJOIN Rubric R\r\nON RL.RubricId=R.Id\r\nJOIN Clo C\r\nON C.Id=R.CloId", con);
+            SqlCommand cmd = new SqlCommand("SELECT RL.Id,RL.Details As [Rubric Detail],RL.MeasurementLevel AS [Marks],R.Details AS [Rubric Name],C.Name AS[CLO Name]\r\nFROM RubricLevel RL\r\nJOIN Rubric R\r\nON RL.RubricId=R.Id\r\nJOIN Clo C\r\nON C.Id=R.CloId", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -60,10 +62,10 @@ namespace Application_CLOs
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
             id_ = int.Parse(dataRowView[0].ToString());
-            string deatail = dataRowView[1].ToString();
-            int marks =int.Parse(dataRowView[2].ToString());
-            txtbxDetail.Text = deatail;
-            txtbxMarks.Text = marks.ToString();
+            detailsForUpdate = dataRowView[1].ToString();
+            marksForUpdate = int.Parse(dataRowView[2].ToString());
+            txtbxDetail.Text = detailsForUpdate;
+            txtbxMarks.Text = marksForUpdate.ToString();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -88,7 +90,7 @@ namespace Application_CLOs
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ValidateName(txtbxDetail.Text) == true)
+            if (ValidateDetail(txtbxDetail.Text) == true && ValidateMarks(txtbxMarks.Text)==true)
             {
                 /// This command retrive the Rubric ID corresponding to the detail of rubric
                 var con = Configuration.getInstance().getConnection();
@@ -116,19 +118,34 @@ namespace Application_CLOs
         {
             if (id_ >= 0)
             {
-                    /// This command retrive the CLO ID corresponding to the name of the clo
-                    var con = Configuration.getInstance().getConnection();
-                    string query = "SELECT ID FROM Rubric WHERE Details='" + cmbxRubric.Text + "'";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    int rubricID = int.Parse(cmd.ExecuteScalar().ToString());
-                    SqlCommand cmd1 = new SqlCommand("Update RubricLevel SET Details=@Details, MeasurementLevel=@Level ,RubricID=" + rubricID + " WHERE ID=" + id_ + "", con);
-                    cmd1.Parameters.AddWithValue("@Details", txtbxDetail.Text);
-                    cmd1.Parameters.AddWithValue("@Level",int.Parse(txtbxMarks.Text));
-                    cmd1.ExecuteNonQuery();
-                    lblSignalDetail.Content = "Data Successfully Updated";
-                    txtbxDetail.Clear();
-                    bindDataGrid();
-                    ClearAllFields();
+                if (ValidateDetail(txtbxDetail.Text) == true && ValidateMarks(txtbxMarks.Text)==true) 
+                { 
+                    if(txtbxDetail.Text!=detailsForUpdate || txtbxMarks.Text != marksForUpdate.ToString())
+                    {
+                        //// This command retrive the Rubric ID corresponding to the detail of rubric
+                        var con = Configuration.getInstance().getConnection();
+                        string query = "SELECT ID FROM Rubric WHERE Details='" + cmbxRubric.Text + "'";
+                        SqlCommand cmd = new SqlCommand(query, con);
+                        int rubricID = int.Parse(cmd.ExecuteScalar().ToString());
+                        SqlCommand cmd1 = new SqlCommand("Update RubricLevel SET Details=@Details, MeasurementLevel=@Level ,RubricID=" + rubricID + " WHERE ID=" + id_ + "", con);
+                        cmd1.Parameters.AddWithValue("@Details", txtbxDetail.Text);
+                        cmd1.Parameters.AddWithValue("@Level", int.Parse(txtbxMarks.Text));
+                        cmd1.ExecuteNonQuery();
+                        lblSignalDetail.Content = "Data Successfully Updated";
+                        txtbxDetail.Clear();
+                        bindDataGrid();
+                        ClearAllFields();
+                    }
+                    else
+                    {
+                        lblMessage.Content = "You had not made any change";
+                    }
+                   
+                }
+                else
+                {
+                    lblMessage.Content = "Fill all required fields";
+                }
             }
             else
             {
@@ -136,12 +153,7 @@ namespace Application_CLOs
             }
 
         }
-        public bool ValidateName(string name)
-        {
-            string pattern = "^[a-zA-Z0-9 ]{2,49}$";
-            Regex regex = new Regex(pattern);
-            return regex.IsMatch(name);
-        }
+       
         private void timer()
         {
             DispatcherTimer dtClockTime = new DispatcherTimer();
@@ -152,7 +164,6 @@ namespace Application_CLOs
         }
         private void dtClockTime_Tick(object sender, EventArgs e)
         {
-            lblSignalDetail.Content = "";
             lblMessage.Content = "";
         }
 
@@ -164,6 +175,7 @@ namespace Application_CLOs
         private void ClearAllFields()
         {
             txtbxDetail.Clear();
+            txtbxMarks.Clear();
             cmbxRubric.SelectedIndex = 0;
             id_ = -1;
         }
@@ -171,16 +183,39 @@ namespace Application_CLOs
         {
             ClearAllFields();
         }
-
-        private void txtbxName_TextChanged(object sender, TextChangedEventArgs e)
+        public bool ValidateDetail(string name)
         {
-            if (ValidateName(txtbxDetail.Text) == false)
+            string pattern = "^[a-zA-Z0-9 ]{2,10000}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(name);
+        }
+        public bool ValidateMarks(string marks)
+        {
+            string pattern = "^[0-9]{1,4}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(marks);
+        }
+
+        private void txtbxDetail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ValidateDetail(txtbxDetail.Text) == false)
             {
-                lblSignalDetail.Content = "Enter CLO Name";
+                lblSignalDetail.Content = "Enter Details";
             }
             else
             {
                 lblSignalDetail.Content = "";
+            }
+        }
+        private void txtbxMarks_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ValidateMarks(txtbxMarks.Text) == false)
+            {
+                lblSignalMarks.Content = "Enter Marks";
+            }
+            else
+            {
+                lblSignalMarks.Content = "";
             }
         }
 
@@ -198,8 +233,7 @@ namespace Application_CLOs
                 txtbxSearch.Foreground = Brushes.Black;
             }
         }
-
-        private void txtbxSearch_LostFocus(object sender, RoutedEventArgs e)
+        private void txtbxSearch_LostFocus_1(object sender, RoutedEventArgs e)
         {
             if (txtbxSearch.Text == "")
             {
@@ -207,7 +241,6 @@ namespace Application_CLOs
                 txtbxSearch.Foreground = Brushes.Silver;
             }
         }
-
         private void btnEditCLO_Click(object sender, RoutedEventArgs e)
         {
             AddCLOs addCLOs = new AddCLOs();
@@ -219,5 +252,7 @@ namespace Application_CLOs
             AddRubric addRubric = new AddRubric();
             addRubric.ShowDialog();
         }
+
+       
     }
 }

@@ -36,7 +36,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center">
-                <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Width="415" TextChanged="txtbxSearch_TextChanged" GotFocus="txtbxSearch_GotFocus"/>
+                <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Width="415" TextChanged="txtbxSearch_TextChanged" GotFocus="txtbxSearch_GotFocus" LostFocus="txtbxSearch_LostFocus_1"/>
 
             </StackPanel>
 
@@ -94,7 +94,7 @@
                 <Label Content="Details *"/>
             </StackPanel>
             <StackPanel Margin="0,4,0,0" Grid.Row="1">
-                <TextBox x:Name="txtbxDetail" TextWrapping="Wrap" Width="202" Height="48"/>
+                <TextBox x:Name="txtbxDetail" TextWrapping="Wrap" Width="202" Height="48" TextChanged="txtbxDetail_TextChanged"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Margin="0,1,0,19" Grid.RowSpan="2"/>
             <StackPanel Grid.Row="2" Margin="0,1,0,19" Grid.RowSpan="2">
@@ -104,7 +104,7 @@
                 <Label x:Name="lblMarks" Content="Marks *"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="0,19,0,0" Grid.RowSpan="2">
-                <TextBox x:Name="txtbxMarks" TextWrapping="Wrap" Width="205"/>
+                <TextBox x:Name="txtbxMarks" TextWrapping="Wrap" Width="205" TextChanged="txtbxMarks_TextChanged"/>
             </StackPanel>
             <StackPanel Grid.Row="4" Margin="0,19,0,18" Grid.RowSpan="3">
                 <Label x:Name="lblSignalMarks" Content="" Foreground="#FFC82530"/>

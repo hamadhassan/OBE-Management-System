@@ -20,8 +20,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnAssessment" Content="Assessment" Foreground="White"  Background="#FF5046B9" FontWeight="Bold" Height="55" Width="100" BorderBrush="#FF5046B9"/>
                 <Button x:Name="btnQuestions" Content="Question" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" />
-                <Button x:Name="btnRubric" Content="Rubric" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
-                <Button x:Name="btnLevels" Content="Levels" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
+                <Button x:Name="btnRubric" Content="Rubric" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnRubric_Click"/>
+                <Button x:Name="btnLevels" Content="Levels" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnLevels_Click"/>
                 <Button x:Name="btnDashboard" Content="Dashboard" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnDashboard_Click"/>
                 <Button x:Name="btnStudent" Content="Student" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnStudent_Click"/>
                 <Button x:Name="btnAttendance" Content="Attendance" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>

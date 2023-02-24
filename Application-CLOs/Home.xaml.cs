@@ -40,5 +40,17 @@ namespace Application_CLOs
             AddCLOs addCLOs = new AddCLOs();
             addCLOs.ShowDialog();
         }
+
+        private void btnLevels_Click(object sender, RoutedEventArgs e)
+        {
+            AddRubricLevel addRubricLevel = new AddRubricLevel();
+            addRubricLevel.ShowDialog();
+        }
+
+        private void btnRubric_Click(object sender, RoutedEventArgs e)
+        {
+            AddRubric addRubric = new AddRubric();
+            addRubric.ShowDialog();
+        }
     }
 }

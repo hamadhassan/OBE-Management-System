@@ -51,3 +51,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Assessment\Add
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Assessment\AddAssessment.baml
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Assessment\AddAssessmentComponent.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Assessment\AddAssessmentComponent.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Student\AddStudentResult.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Student\AddStudentResult.baml

@@ -1,0 +1,147 @@
+﻿<Window x:Class="Application_CLOs.AddStudentResult"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application_CLOs"
+        mc:Ignorable="d"
+        Title="Student Result" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="245*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="49*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Margin="0,39,0,0" Grid.RowSpan="2">
+                <Label x:Name="lblTitle" Content="Add Student Result" FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0,89,0,0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="69*"/>
+                <ColumnDefinition Width="71*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="34*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <Label x:Name="lblStudentName" Content="Student Name *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBox x:Name="txtbxStudentName" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <Label x:Name="lblAssessmentName" Content="Assessment Name *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3">
+                    <ComboBox x:Name="cmbxAssessmentName" Width="200" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4">
+                    <Label x:Name="lblQuesion" Content="Question *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5">
+                    <ComboBox x:Name="cmbxQuestion" Width="205" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Grid.Row="6">
+                    <Label x:Name="lblRubricLevel" Content="Rubric Level *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="7">
+                    <ComboBox x:Name="cmbxRubricLevel" Width="200" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="34*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <Label x:Name="lblRegistrationNumber" Content="Registration Number *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBox x:Name="txtbxRegistrationNumber" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <Label x:Name="lblMappedCLO" Content="Mapped CLO *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3">
+                    <TextBox x:Name="txtbxMappedCLO" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4">
+                    <Label x:Name="lblTotalMarks" Content="Total Marks *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5">
+                    <TextBox x:Name="txtbxTotalMarks" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Grid.Row="6">
+                    <Label x:Name="lblObtainedMarks" Content="Obtained Marks *"/>
+                </StackPanel>
+                <StackPanel Grid.Row="7">
+                    <TextBox x:Name="txtbxObtainedMarks" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51*"/>
+                <ColumnDefinition Width="109*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Label x:Name="lblMessage" Content="" Foreground="#FFC82530"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="4">
+                <Button x:Name="btnSave" Content="Save" Width="120" Height="35" Foreground="White" Background="#FF357712"/>
+            </StackPanel>
+            <StackPanel Grid.Column="5"/>
+            <StackPanel Grid.Column="3">
+                <Button x:Name="btnClose" Content="Close" Width="120" Height="35" Background="#FFC82530" Foreground="White"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Button x:Name="btnViewRubric" Content="View Rubric" Width="120" Height="35" Background="#FF01565B" Foreground="White"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Button x:Name="btnAssessmnet" Content="View Assessment" Width="120" Height="35" Background="#FF033B3E" Foreground="White"/>
+            </StackPanel>
+            <StackPanel/>
+        </Grid>
+
+    </Grid>
+</Window>

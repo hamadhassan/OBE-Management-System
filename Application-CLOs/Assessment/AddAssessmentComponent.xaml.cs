@@ -43,7 +43,18 @@ namespace Application_CLOs
             dgAssessment.ItemsSource = dt.DefaultView;
 
         }
-        private void bindAssessmentTitleANDRubricName()
+        private void bindRubricName()
+        {
+            var con = Configuration.getInstance().getConnection();
+            SqlCommand cmd2 = new SqlCommand("SELECT R.Details FROM Rubric R", con);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                // Add data to combo box
+                cmbxRubric.Items.Add(reader2["Details"].ToString());
+            }
+        }
+        private void bindAssessmentTitle()
         {
             var con = Configuration.getInstance().getConnection();
             SqlCommand cmd = new SqlCommand("SELECT A.Title\r\nFROM Assessment A", con);
@@ -53,27 +64,32 @@ namespace Application_CLOs
                 // Add data to combo box
                 cmbxAssessment.Items.Add(reader["Title"].ToString());
             }
-            SqlCommand cmd2 = new SqlCommand("SELECT R.Details FROM Rubric R", con);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
-            {
-                // Add data to combo box
-                cmbxRubric.Items.Add(reader2["Details"].ToString());
-            }
         }
         private void Window_Activated_1(object sender, EventArgs e)
         {
             bindDataGrid();
-            bindAssessmentTitleANDRubricName();
+            bindRubricName();
         }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            id_ = int.Parse(dataRowView[0].ToString());
-            NameForUpdate = dataRowView[1].ToString();
-            marksForUpdate = int.Parse(dataRowView[2].ToString());
-            txtbxName.Text = NameForUpdate;
-            txtbxMarks.Text = marksForUpdate.ToString();
+            try
+            {
+                if (dgAssessment.SelectedIndex >= 0 && dgAssessment.SelectedValue != null)
+                {
+                    DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+                    id_ = int.Parse(dataRowView[0].ToString());
+                    NameForUpdate = dataRowView[1].ToString();
+                    marksForUpdate = int.Parse(dataRowView[2].ToString());
+                    txtbxName.Text = NameForUpdate;
+                    txtbxMarks.Text = marksForUpdate.ToString();
+                }
+                bindDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("You are trying to access the wrong field", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+           
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -273,6 +289,11 @@ namespace Application_CLOs
         {
             AddAssessment addAssessment = new AddAssessment();
             addAssessment.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            bindAssessmentTitle();
         }
     }
 }

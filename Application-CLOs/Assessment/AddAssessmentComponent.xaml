@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="Questions" Height="450" Width="800" WindowStartupLocation="CenterScreen" Activated="Window_Activated_1">
+        Title="Questions" Height="450" Width="800" WindowStartupLocation="CenterScreen" Activated="Window_Activated_1" Loaded="Window_Loaded">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="Student Result" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Student Result" Height="450" Width="800" WindowStartupLocation="CenterScreen" Activated="Window_Activated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89*"/>
@@ -128,17 +128,17 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="4">
-                <Button x:Name="btnSave" Content="Save" Width="120" Height="35" Foreground="White" Background="#FF357712"/>
+                <Button x:Name="btnSave" Content="Save" Width="120" Height="35" Foreground="White" Background="#FF357712" Click="btnSave_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="5"/>
             <StackPanel Grid.Column="3">
-                <Button x:Name="btnClose" Content="Close" Width="120" Height="35" Background="#FFC82530" Foreground="White"/>
+                <Button x:Name="btnClose" Content="Close" Width="120" Height="35" Background="#FFC82530" Foreground="White" Click="btnClose_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="2">
-                <Button x:Name="btnViewRubric" Content="View Rubric" Width="120" Height="35" Background="#FF01565B" Foreground="White"/>
+                <Button x:Name="btnViewRubric" Content="View Rubric" Width="120" Height="35" Background="#FF01565B" Foreground="White" Click="btnViewRubric_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <Button x:Name="btnAssessmnet" Content="View Assessment" Width="120" Height="35" Background="#FF033B3E" Foreground="White"/>
+                <Button x:Name="btnAssessmnet" Content="View Assessment" Width="120" Height="35" Background="#FF033B3E" Foreground="White" Click="btnAssessmnet_Click"/>
             </StackPanel>
             <StackPanel/>
         </Grid>

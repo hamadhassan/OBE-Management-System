@@ -70,7 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Student\AddStudentResult.xaml.cs">
+    <Compile Include="Result\AddStudentResult.xaml.cs">
       <DependentUpon>AddStudentResult.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assessment\AddAssessmentComponent.xaml.cs">
@@ -108,6 +108,9 @@
     <Compile Include="Student\ViewStudent.xaml.cs">
       <DependentUpon>ViewStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Result\ViewStudentForMarkeResult.xaml.cs">
+      <DependentUpon>ViewStudentForMarkeResult.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -137,7 +140,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Student\AddStudentResult.xaml">
+    <Page Include="Result\AddStudentResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Student\ViewStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Result\ViewStudentForMarkeResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

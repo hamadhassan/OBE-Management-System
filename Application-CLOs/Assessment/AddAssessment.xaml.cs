@@ -19,65 +19,56 @@ using System.Windows.Threading;
 namespace Application_CLOs
 {
     /// <summary>
-    /// Interaction logic for AddRubricLevel.xaml
+    /// Interaction logic for AddAssessment.xaml
     /// </summary>
-    public partial class AddRubricLevel : Window
+    public partial class AddAssessment : Window
     {
         int id_ = 0;
-        string detailsForUpdate;
+        string titleForUpdate;
         int marksForUpdate;
-        public AddRubricLevel()
+        int weightageForUpdate;
+        public AddAssessment()
         {
             InitializeComponent();
             timer();
-            cmbxRubric.SelectedIndex = 0;
         }
         private void bindDataGrid()
         {
             var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT RL.Id,RL.Details As [Rubric Detail],RL.MeasurementLevel AS [Marks],R.Details AS [Rubric Name],C.Name AS[CLO Name]\r\nFROM RubricLevel RL\r\nJOIN Rubric R\r\nON RL.RubricId=R.Id\r\nJOIN Clo C\r\nON C.Id=R.CloId", con);
+            SqlCommand cmd = new SqlCommand("SELECT *\r\nFROM Assessment", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dgRubric.ItemsSource = dt.DefaultView;
+            dgAssessment.ItemsSource = dt.DefaultView;
 
         }
-        private void bindRrubricName()
-        {
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT R.Details FROM Rubric R", con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                // Add data to combo box
-                cmbxRubric.Items.Add(reader["Details"].ToString());
-            }
-        }
-        private void Window_Activated(object sender, EventArgs e)
+        private void Window_Activated_1(object sender, EventArgs e)
         {
             bindDataGrid();
-            bindRrubricName();
         }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
             id_ = int.Parse(dataRowView[0].ToString());
-            detailsForUpdate = dataRowView[1].ToString();
-            marksForUpdate = int.Parse(dataRowView[2].ToString());
-            txtbxDetail.Text = detailsForUpdate;
+            titleForUpdate = dataRowView[1].ToString();
+            marksForUpdate = int.Parse(dataRowView[3].ToString());
+            weightageForUpdate = int.Parse(dataRowView[4].ToString());
+            txtbxTitle.Text = titleForUpdate;
             txtbxMarks.Text = marksForUpdate.ToString();
+            txtbxWeightage.Text = weightageForUpdate.ToString();
+
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (dgRubric.SelectedIndex >= 0 && dgRubric.SelectedValue != null)
+                if (dgAssessment.SelectedIndex >= 0 && dgAssessment.SelectedValue != null)
                 {
                     DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
                     int id = int.Parse(dataRowView[0].ToString());
                     var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM RubricLevel WHERE ID='" + id + "'", con);
+                    SqlCommand cmd = new SqlCommand("DELETE FROM Assessment WHERE ID='" + id + "'", con);
                     cmd.ExecuteNonQuery();
                 }
                 bindDataGrid();
@@ -90,21 +81,19 @@ namespace Application_CLOs
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ValidateDetail(txtbxDetail.Text) == true && ValidateMarks(txtbxMarks.Text)==true)
+            if (ValidateTitle(txtbxTitle.Text) == true && ValidateMarks(txtbxMarks.Text) == true && ValidateMarks(txtbxWeightage.Text) == true)
             {
-                /// This command retrive the Rubric ID corresponding to the detail of rubric
                 var con = Configuration.getInstance().getConnection();
-                string query = "SELECT ID FROM Rubric WHERE Details='" + cmbxRubric.Text + "'";
-                SqlCommand cmd = new SqlCommand(query, con);
-                int rubricID = int.Parse(cmd.ExecuteScalar().ToString());
                 //// Now the input data will be stored into the database
-                SqlCommand cmd3 = new SqlCommand("INSERT into RubricLevel values  (" + rubricID + ",@Detail, " + int.Parse(txtbxMarks.Text) + ")", con);
-                cmd3.Parameters.AddWithValue("@Detail", txtbxDetail.Text);
-                cmd3.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand("INSERT into Assessment values (@Title,GETDATE(),@TotalMarks,@TotalWeightage)", con);
+                cmd.Parameters.AddWithValue("@Title", txtbxTitle.Text);
+                cmd.Parameters.AddWithValue("@TotalMarks",int.Parse(txtbxMarks.Text));
+                cmd.Parameters.AddWithValue("@TotalWeightage", int.Parse(txtbxWeightage.Text));
+                cmd.ExecuteNonQuery();
                 lblMessage.Content = "Data Successfully Saved";
                 bindDataGrid();
                 ClearAllFields();
-              
+
             }
             else
             {
@@ -118,19 +107,16 @@ namespace Application_CLOs
         {
             if (id_ >= 0)
             {
-                if (ValidateDetail(txtbxDetail.Text) == true && ValidateMarks(txtbxMarks.Text)==true) 
-                { 
-                    if(txtbxDetail.Text!=detailsForUpdate || txtbxMarks.Text != marksForUpdate.ToString())
+                if (ValidateTitle(txtbxTitle.Text) == true && ValidateMarks(txtbxMarks.Text) == true && ValidateMarks(txtbxWeightage.Text)==true)
+                {
+                    if (txtbxTitle.Text != titleForUpdate || txtbxMarks.Text != marksForUpdate.ToString() || txtbxWeightage.Text!=weightageForUpdate.ToString())
                     {
-                        //// This command retrive the Rubric ID corresponding to the detail of rubric
                         var con = Configuration.getInstance().getConnection();
-                        string query = "SELECT ID FROM Rubric WHERE Details='" + cmbxRubric.Text + "'";
-                        SqlCommand cmd = new SqlCommand(query, con);
-                        int rubricID = int.Parse(cmd.ExecuteScalar().ToString());
-                        SqlCommand cmd1 = new SqlCommand("Update RubricLevel SET Details=@Details, MeasurementLevel=@Level ,RubricID=" + rubricID + " WHERE ID=" + id_ + "", con);
-                        cmd1.Parameters.AddWithValue("@Details", txtbxDetail.Text);
-                        cmd1.Parameters.AddWithValue("@Level", int.Parse(txtbxMarks.Text));
-                        cmd1.ExecuteNonQuery();
+                        SqlCommand cmd = new SqlCommand("Update Assessment SET Title=@Title, TotalMarks=@TotalMarks ,TotalWeightage=@TotalWeightage WHERE ID=" + id_ + "", con);
+                        cmd.Parameters.AddWithValue("@Title", txtbxTitle.Text);
+                        cmd.Parameters.AddWithValue("@TotalMarks", int.Parse(txtbxMarks.Text));
+                        cmd.Parameters.AddWithValue("@TotalWeightage", int.Parse(txtbxWeightage.Text));
+                        cmd.ExecuteNonQuery();
                         lblMessage.Content = "Data Successfully Updated";
                         bindDataGrid();
                         ClearAllFields();
@@ -139,7 +125,7 @@ namespace Application_CLOs
                     {
                         lblMessage.Content = "You had not made any change";
                     }
-                   
+
                 }
                 else
                 {
@@ -152,7 +138,7 @@ namespace Application_CLOs
             }
 
         }
-       
+
         private void timer()
         {
             DispatcherTimer dtClockTime = new DispatcherTimer();
@@ -173,18 +159,18 @@ namespace Application_CLOs
 
         private void ClearAllFields()
         {
-            txtbxDetail.Clear();
+            txtbxTitle.Clear();
             txtbxMarks.Clear();
-            cmbxRubric.SelectedIndex = 0;
+            txtbxWeightage.Clear();
             id_ = -1;
         }
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             ClearAllFields();
         }
-        public bool ValidateDetail(string name)
+        public bool ValidateTitle(string name)
         {
-            string pattern = "^[a-zA-Z0-9 ]{2,10000}$";
+            string pattern = "^[a-zA-Z0-9 ]{2,50}$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(name);
         }
@@ -197,13 +183,13 @@ namespace Application_CLOs
 
         private void txtbxDetail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (ValidateDetail(txtbxDetail.Text) == false)
+            if (ValidateTitle(txtbxTitle.Text) == false)
             {
-                lblSignalDetail.Content = "Enter Details";
+                lblSignalTitle.Content = "Enter Title";
             }
             else
             {
-                lblSignalDetail.Content = "";
+                lblSignalTitle.Content = "";
             }
         }
         private void txtbxMarks_TextChanged(object sender, TextChangedEventArgs e)
@@ -217,7 +203,17 @@ namespace Application_CLOs
                 lblSignalMarks.Content = "";
             }
         }
-
+        private void txtbxWeightage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ValidateMarks(txtbxMarks.Text) == false)
+            {
+                lblSignalWeightage.Content = "Enter Weightage";
+            }
+            else
+            {
+                lblSignalWeightage.Content = "";
+            }
+        }
         private void txtbxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -240,18 +236,7 @@ namespace Application_CLOs
                 txtbxSearch.Foreground = Brushes.Silver;
             }
         }
-        private void btnEditCLO_Click(object sender, RoutedEventArgs e)
-        {
-            AddCLOs addCLOs = new AddCLOs();
-            addCLOs.ShowDialog();
-        }
 
-        private void btnEditRubric1_Click(object sender, RoutedEventArgs e)
-        {
-            AddRubric addRubric = new AddRubric();
-            addRubric.ShowDialog();
-        }
-
-       
+      
     }
 }

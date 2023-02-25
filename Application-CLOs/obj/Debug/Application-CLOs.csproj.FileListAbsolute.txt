@@ -47,3 +47,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Rubric\AddRubr
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Rubric\AddRubricLevel.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Rubric\AddRubric.baml
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Rubric\AddRubricLevel.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Assessment\AddAssessment.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Assessment\AddAssessment.baml

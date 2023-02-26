@@ -52,6 +52,22 @@ namespace Application_CLOs
             {
                 // Add data to combo box
                 cmbxAssessmentName.Items.Add(reader["Title"].ToString());
+            }  
+        }
+        private void bindAssessmentQuestions()
+        {
+            //// This command retrive the Assessment ID corresponding to the name of the assessment
+            var con = Configuration.getInstance().getConnection();
+            string query = "SELECT A.Id\r\nFROM Assessment A WHERE A.Title='" + cmbxAssessmentName.Text + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int assessmentId = int.Parse(cmd.ExecuteScalar().ToString());
+
+            SqlCommand cmd1 = new SqlCommand("\r\nSELECT AC.Name\r\nFROM Assessment A\r\nJOIN AssessmentComponent AC\r\nON AC.AssessmentId=A.Id\r\nWHERE A.Id="+ assessmentId, con);
+            SqlDataReader reader = cmd1.ExecuteReader();
+            while (reader.Read())
+            {
+                // Add data to combo box
+                cmbxAssessmentName.Items.Add(reader["Title"].ToString());
             }
         }
         private void Window_Activated(object sender, EventArgs e)
@@ -61,6 +77,7 @@ namespace Application_CLOs
             query = "SELECT S.RegistrationNumber \r\nFROM Student S\r\nWHERE ID=" + studentId;
             txtbxRegistrationNumber.Text = queryData(query);
             bindAssessmentName();
+            bindAssessmentQuestions();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -82,6 +99,14 @@ namespace Application_CLOs
 
         }
 
-       
+        private void cmbxAssessmentName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          //  bindAssessmentQuestions();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           // bindAssessmentQuestions();
+        }
     }
 }

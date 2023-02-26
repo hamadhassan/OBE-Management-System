@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="Student Result" Height="450" Width="800" WindowStartupLocation="CenterScreen" Activated="Window_Activated">
+        Title="Student Result" Height="450" Width="800" WindowStartupLocation="CenterScreen" Activated="Window_Activated" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89*"/>
@@ -53,7 +53,7 @@
                     <Label x:Name="lblAssessmentName" Content="Assessment Name *"/>
                 </StackPanel>
                 <StackPanel Grid.Row="3">
-                    <ComboBox x:Name="cmbxAssessmentName" Width="200" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="cmbxAssessmentName" Width="200" HorizontalAlignment="Left" SelectionChanged="cmbxAssessmentName_SelectionChanged"/>
                 </StackPanel>
                 <StackPanel Grid.Row="4">
                     <Label x:Name="lblQuesion" Content="Question *"/>

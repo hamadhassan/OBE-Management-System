@@ -1,0 +1,47 @@
+﻿<Window x:Class="Application_CLOs.ViewStudentResult"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application_CLOs"
+        mc:Ignorable="d"
+        Title="ViewStudentResult" Height="450" Width="800" Activated="Window_Activated">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="415*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="99*"/>
+                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnClose" Grid.Column="2" Content="Close" Margin="20,10,0,0" Height="24" Width="90" Background="#FFC82530" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnClose_Click"/>
+            <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Text="Search Here" Width="624" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="18"/>
+
+        </Grid>
+        <DataGrid x:Name="dgStudent" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,44,0,0" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEdit" Content="Edit" Click="btnEdit_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDelete" Content="Delete" Click="btnDelete_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

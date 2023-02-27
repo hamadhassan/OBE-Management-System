@@ -89,22 +89,7 @@ namespace Application_CLOs
             this.Close();
         }
 
-        private void Window_GotFocus(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
         private void Window_Activated(object sender, EventArgs e)
-        {
-            bindDataGrid();
-        }
-
-        private void txtbxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void btnLoadData_Click(object sender, RoutedEventArgs e)
         {
             bindDataGrid();
         }

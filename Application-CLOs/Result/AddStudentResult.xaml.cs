@@ -36,47 +36,67 @@ namespace Application_CLOs
         {
             cmbxAssessmentName.SelectedIndex = 0;
         }
+
         private string queryData(string query)
         {
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand(query, con);
-            string output = cmd.ExecuteScalar().ToString();
-            return output;
-        }
-        private void bindAssessmentName()
-        {
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT A.Title\r\nFROM Assessment A", con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            string output = null;
+            try
             {
-                // Add data to combo box
-                cmbxAssessmentName.Items.Add(reader["Title"].ToString());
-            }  
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd = new SqlCommand(query, con);
+                output = cmd.ExecuteScalar().ToString();
+                MessageBox.Show(output);
+            }
+
+            catch (Exception ex)
+            {
+                lblMessage.Content= ex.Message;
+            }
+            return output;
+
         }
         private void bindAssessmentQuestions()
         {
-            //// This command retrive the Assessment ID corresponding to the name of the assessment
-            var con = Configuration.getInstance().getConnection();
-            string query = "SELECT A.Id\r\nFROM Assessment A WHERE A.Title='" + cmbxAssessmentName.Text + "'";
-            SqlCommand cmd = new SqlCommand(query, con);
-            int assessmentId = int.Parse(cmd.ExecuteScalar().ToString());
-
-            SqlCommand cmd1 = new SqlCommand("\r\nSELECT AC.Name\r\nFROM Assessment A\r\nJOIN AssessmentComponent AC\r\nON AC.AssessmentId=A.Id\r\nWHERE A.Id="+ assessmentId, con);
-            SqlDataReader reader = cmd1.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                // Add data to combo box
-                cmbxAssessmentName.Items.Add(reader["Title"].ToString());
+                ////bindAssessmentName into Combox Box
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd1 = new SqlCommand("SELECT A.Title FROM Assessment A", con);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    // Add data to combo box
+                    cmbxAssessmentName.Items.Add(reader1["Title"].ToString());
+                }
+                cmbxAssessmentName.SelectedIndex = 0;
+                //// This command retrive the Assessment ID corresponding to the name of the assessment
+                //// Then bind the correspoinding Assessment Question 
+                //string query = "SELECT A.Id FROM Assessment A WHERE A.Title='" + cmbxAssessmentName.Text + "'";
+                string query = "SELECT A.Id FROM Assessment A WHERE A.Title='Quiz123'";
+                string assessmentId = queryData(query);
+                MessageBox.Show("ID is ", assessmentId);
+                /// bind Assessment question 
+                SqlCommand cmd3 = new SqlCommand("\r\nSELECT AC.Name\r\nFROM Assessment A\r\nJOIN AssessmentComponent AC\r\nON AC.AssessmentId=A.Id\r\nWHERE A.Id=" + assessmentId, con);
+                SqlDataReader reader2 = cmd3.ExecuteReader();
+                while (reader2.Read())
+                {
+                    // Add data to combo box
+                    cmbxQuestion.Items.Add(reader2["Name"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Content = ex.Message;
             }
         }
         private void Window_Activated(object sender, EventArgs e)
         {
+            ////Retrive First Name and Last Name
             string query = "SELECT CONCAT(S.FirstName,' ',S.LastName)\r\nFROM Student S\r\nWHERE ID=" + studentId;
             txtbxStudentName.Text=queryData(query);
+            ////Retrive Registration Number
             query = "SELECT S.RegistrationNumber \r\nFROM Student S\r\nWHERE ID=" + studentId;
             txtbxRegistrationNumber.Text = queryData(query);
-            bindAssessmentName();
             bindAssessmentQuestions();
         }
 

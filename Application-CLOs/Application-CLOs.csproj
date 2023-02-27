@@ -111,6 +111,9 @@
     <Compile Include="Result\ViewStudentForMarkeResult.xaml.cs">
       <DependentUpon>ViewStudentForMarkeResult.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Result\ViewStudentResult.xaml.cs">
+      <DependentUpon>ViewStudentResult.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -185,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Result\ViewStudentForMarkeResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Result\ViewStudentResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

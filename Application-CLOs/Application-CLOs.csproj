@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DL\AssessmentDL.cs" />
+    <Compile Include="BL\Assessment.cs" />
     <Compile Include="Result\AddStudentResult.xaml.cs">
       <DependentUpon>AddStudentResult.xaml</DependentUpon>
     </Compile>

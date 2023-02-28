@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Application_CLOs
 {
     /// <summary>
@@ -45,7 +44,6 @@ namespace Application_CLOs
                 var con = Configuration.getInstance().getConnection();
                 SqlCommand cmd = new SqlCommand(query, con);
                 output = cmd.ExecuteScalar().ToString();
-                MessageBox.Show(output);
             }
 
             catch (Exception ex)
@@ -55,26 +53,26 @@ namespace Application_CLOs
             return output;
 
         }
+        
         private void bindAssessmentQuestions()
         {
+           
             try
             {
-                ////bindAssessmentName into Combox Box
+                
+                //////Bind the Title from the assessmnt relation into Combox Box
                 var con = Configuration.getInstance().getConnection();
-                SqlCommand cmd1 = new SqlCommand("SELECT A.Title FROM Assessment A", con);
-                SqlDataReader reader1 = cmd1.ExecuteReader();
-                while (reader1.Read())
+
+                AssessmentDL.LoadDataIntoList();
+                foreach (string title in AssessmentDL.GetAssessmentTitle())
                 {
-                    // Add data to combo box
-                    cmbxAssessmentName.Items.Add(reader1["Title"].ToString());
+                    cmbxAssessmentName.Items.Add(title);
                 }
                 cmbxAssessmentName.SelectedIndex = 0;
-                //// This command retrive the Assessment ID corresponding to the name of the assessment
-                //// Then bind the correspoinding Assessment Question 
-                //string query = "SELECT A.Id FROM Assessment A WHERE A.Title='" + cmbxAssessmentName.Text + "'";
-                string query = "SELECT A.Id FROM Assessment A WHERE A.Title='Quiz123'";
+                ////Bind the Assessment Question from the selected assessment name
+                /// This command retrive the Assessment ID corresponding to the name of the assessment
+                string query = "SELECT A.Id FROM Assessment A WHERE A.Title='" + cmbxAssessmentName.Text + "'";
                 string assessmentId = queryData(query);
-                MessageBox.Show("ID is ", assessmentId);
                 /// bind Assessment question 
                 SqlCommand cmd3 = new SqlCommand("\r\nSELECT AC.Name\r\nFROM Assessment A\r\nJOIN AssessmentComponent AC\r\nON AC.AssessmentId=A.Id\r\nWHERE A.Id=" + assessmentId, con);
                 SqlDataReader reader2 = cmd3.ExecuteReader();
@@ -83,6 +81,23 @@ namespace Application_CLOs
                     // Add data to combo box
                     cmbxQuestion.Items.Add(reader2["Name"].ToString());
                 }
+                cmbxQuestion.SelectedIndex = 0;
+                reader2.Close();
+                //// Bind the measurment level from the rubric level relation into the combo box
+                ///Firstly get the rubric id from the asssessment component relation name 
+                query = "SELECT AC.RubricID FROM AssessmentComponent AC WHERE AC.Name='" + cmbxQuestion.Text + "'";
+                string rubricID = queryData(query);
+                /// bind measurment level 
+                SqlCommand cmd4 = new SqlCommand("SELECT RL.MeasurementLevel FROM RubricLevel RL WHERE RL.RubricId=" + rubricID, con);
+                SqlDataReader reader3 = cmd4.ExecuteReader();
+                while (reader3.Read())
+                {
+                    // Add data to combo box
+                    cmbxRubricLevel.Items.Add(reader3["MeasurementLevel"].ToString());
+                }
+                cmbxRubricLevel.SelectedIndex = 0;
+                reader3.Close();
+
             }
             catch (Exception ex)
             {

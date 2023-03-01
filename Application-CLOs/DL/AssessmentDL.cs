@@ -19,6 +19,7 @@ namespace Application_CLOs
         }
         public static void LoadDataIntoList()
         {
+            assessmentsList.Clear();
             var con = Configuration.getInstance().getConnection();
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM Assessment A\r\n", con);
             SqlDataReader reader1 = cmd1.ExecuteReader();
@@ -37,6 +38,7 @@ namespace Application_CLOs
         }
         public static List<string> GetAssessmentTitle()
         {
+            LoadDataIntoList();
             List<string> title = new List<string>();    
             foreach(Assessment s in assessmentsList)
             {
@@ -44,6 +46,20 @@ namespace Application_CLOs
             }
             return title;
 
+        }
+        public static int GetAssessemntIdFromTitle(string title)
+        {
+            LoadDataIntoList();
+            int id = -1;
+            foreach (Assessment s in assessmentsList)
+            {
+                if (s.Title == title)
+                {
+                    id=s.Id;
+                    break;
+                }
+            }
+            return id;
         }
     }
 }

@@ -59,13 +59,13 @@
                     <Label x:Name="lblQuesion" Content="Question *"/>
                 </StackPanel>
                 <StackPanel Grid.Row="5">
-                    <ComboBox x:Name="cmbxQuestion" Width="205" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="cmbxQuestion" Width="205" HorizontalAlignment="Left" SelectionChanged="cmbxQuestion_SelectionChanged"/>
                 </StackPanel>
                 <StackPanel Grid.Row="6">
                     <Label x:Name="lblRubricLevel" Content="Rubric Level *"/>
                 </StackPanel>
                 <StackPanel Grid.Row="7">
-                    <ComboBox x:Name="cmbxRubricLevel" Width="200" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="cmbxRubricLevel" Width="200" HorizontalAlignment="Left" SelectionChanged="cmbxRubricLevel_SelectionChanged"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="2">

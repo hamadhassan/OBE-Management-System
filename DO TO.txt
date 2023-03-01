@@ -1,3 +1,6 @@
 Two student with same name not store data
 
 Open the edit CLO window from rubirc is not working but direclty open work
+
+
+Make singlton class

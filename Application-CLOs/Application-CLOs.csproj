@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DL\AssessmentComponentDL.cs" />
+    <Compile Include="BL\AssessmentComponent.cs" />
     <Compile Include="DL\AssessmentDL.cs" />
     <Compile Include="BL\Assessment.cs" />
     <Compile Include="Result\AddStudentResult.xaml.cs">
@@ -81,6 +83,8 @@
     <Compile Include="Assessment\AddAssessment.xaml.cs">
       <DependentUpon>AddAssessment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BL\RubricLevel.cs" />
+    <Compile Include="DL\RubricLevelDL.cs" />
     <Compile Include="Rubric\AddRubric.xaml.cs">
       <DependentUpon>AddRubric.xaml</DependentUpon>
     </Compile>

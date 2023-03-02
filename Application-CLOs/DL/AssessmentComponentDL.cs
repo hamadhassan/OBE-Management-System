@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Application_CLOs
 {
@@ -86,6 +87,19 @@ namespace Application_CLOs
             int rubricID = int.Parse(queryData(query));
             return rubricID;
         }
-
+        public static int GetAssesmentComponetId(string name,int rubricId,int totalMarks)
+        {
+            LoadDataIntoList();
+            int id = -1;
+            foreach (AssessmentComponent s in assessmentsComponentList)
+            {
+                if (s.Name == name && s.RubricId == rubricId && s.TotalMarks==totalMarks)
+                {
+                    id = s.Id;
+                    break;
+                }
+            }
+            return id;
+        }
     }
 }

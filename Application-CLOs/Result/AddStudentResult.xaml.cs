@@ -21,6 +21,10 @@ namespace Application_CLOs
     public partial class AddStudentResult : Window
     {
         int studentId;
+        bool isForUpdateResult=false; //If the form open for update 
+        int rubricId_;
+        string assessmentTitle;
+        string questionName;
         public AddStudentResult()
         {
             InitializeComponent();
@@ -29,13 +33,30 @@ namespace Application_CLOs
         {
             InitializeComponent();
             this.studentId = studentId;
-           // settingComboBox();
         }
-        private void settingComboBox()
+        public AddStudentResult(int studentId,string assessmentTitle, string questionName, bool isForUpdateResult)
         {
-            cmbxAssessmentName.SelectedIndex = 0;
+            InitializeComponent();
+            this.studentId = studentId;
+            this.isForUpdateResult = isForUpdateResult;
+            this.assessmentTitle = assessmentTitle;
+            this.questionName = questionName;
+            settingForUpdate();
         }
+        private void settingForUpdate()
+        {
+            lblTitle.Content = "Update Student Result";
+            btnSave.Content = "Update";
+            cmbxAssessmentName.Items.Clear();
+            cmbxAssessmentName.Items.Add(assessmentTitle);
+            cmbxQuestion.Items.Clear();
+            cmbxQuestion.Items.Add(questionName);
+            cmbxAssessmentName.SelectedIndex= 0;
+            cmbxQuestion.SelectedIndex= 0;
+            cmbxAssessmentName.IsEnabled= false;
+            cmbxQuestion.IsEnabled= false;
 
+        }
         private string queryData(string query)
         {
             string output = null;
@@ -55,18 +76,7 @@ namespace Application_CLOs
         }
         private void bindAssessmentTitle()
         {
-
             //////Bind the Title from the assessmnt relation into Combox Box
-            //var con = Configuration.getInstance().getConnection();
-            //SqlCommand cmd1 = new SqlCommand("SELECT A.Title FROM Assessment A", con);
-            //SqlDataReader reader1 = cmd1.ExecuteReader();
-            //while (reader1.Read())
-            //{
-            //    // Add data to combo box
-            //    cmbxAssessmentName.Items.Add(reader1["Title"].ToString());
-            //}
-            //reader1.Close();
-            //cmbxAssessmentName.SelectedIndex = 0;
             cmbxAssessmentName.Items.Clear();
             AssessmentDL.LoadDataIntoList();
             foreach(string a in AssessmentDL.GetAssessmentTitle())
@@ -74,43 +84,30 @@ namespace Application_CLOs
                 cmbxAssessmentName.Items.Add(a);
             }
             cmbxAssessmentName.SelectedIndex = 0;
-
         }
         private void bindAssessmentQuestions(int assessmentid)
         {
-            //////Bind the Assessment Question from the selected assessment name
-            //var con = Configuration.getInstance().getConnection();
-            ///// bind Assessment question 
-            //SqlCommand cmd3 = new SqlCommand("SELECT AC.Name FROM AssessmentComponent AC WHERE  AC.ID=" + assessmentid, con);
-            //SqlDataReader reader2 = cmd3.ExecuteReader();
-            //while (reader2.Read())
-            //{
-            //    // Add data to combo box
-            //    cmbxQuestion.Items.Add(reader2["Name"].ToString());
-            //}
-            //reader2.Close();
-            cmbxQuestion.Items.Clear();
-            AssessmentComponentDL.LoadDataIntoList();
-            foreach (string a in AssessmentComponentDL.GetAssessmentComponentNameFromAssessmentId(assessmentid))
-            {
-                cmbxQuestion.Items.Add(a);
-            }
-            cmbxQuestion.SelectedIndex = 0;
-            if (cmbxQuestion.Items.Count== 0)
-            {
-                lblMessage.Content="Data is not available of "+ cmbxAssessmentName.SelectedItem.ToString();
-                cmbxRubricLevel.Items.Clear();
-            }
-            else
-            {
-                cmbxQuestion.SelectedIndex = 0;
-                lblMessage.Content = "";
-            }
-           
-
             try
             {
-               
+                //////Bind the Assessment Question from the selected assessment name
+                cmbxQuestion.Items.Clear();
+                AssessmentComponentDL.LoadDataIntoList();
+                foreach (string a in AssessmentComponentDL.GetAssessmentComponentNameFromAssessmentId(assessmentid))
+                {
+                    cmbxQuestion.Items.Add(a);
+                }
+                cmbxQuestion.SelectedIndex = 0;
+                if (cmbxQuestion.Items.Count == 0)
+                {
+                    lblMessage.Content = "Data is not available of " + cmbxAssessmentName.SelectedItem.ToString();
+                    cmbxRubricLevel.Items.Clear();
+                }
+                else
+                {
+                    cmbxQuestion.SelectedIndex = 0;
+                    lblMessage.Content = "";
+                }
+                
             }
             catch (Exception ex)
             {
@@ -119,8 +116,6 @@ namespace Application_CLOs
         }
         private void bindMeasuremntLevel(int rubricId)
         {
-
-
             cmbxRubricLevel.Items.Clear();
             if (RubricLevelDL.isMeasuremntLevelExist(rubricId))
             {
@@ -129,22 +124,6 @@ namespace Application_CLOs
                     cmbxRubricLevel.Items.Add(level);
                 }
                 cmbxRubricLevel.SelectedIndex = 0;
-            }
-           
-            //// Bind the measurment level from the rubric level relation into the combo box
-            if (cmbxQuestion.Items.Count> 0)
-            {
-                //var con = Configuration.getInstance().getConnection();
-                //SqlCommand cmd4 = new SqlCommand("\r\nSELECT RL.MeasurementLevel\r\nFROM RubricLevel RL\r\nJOIN AssessmentComponent AC\r\nON AC.RubricId=RL.RubricId\r\nWHERE AC.Id IN(SELECT AC1.Id FROM AssessmentComponent AC1 WHERE AC1.Name='" + cmbxQuestion.SelectedItem.ToString() + "')", con);
-                //SqlDataReader reader3 = cmd4.ExecuteReader();
-                //while (reader3.Read())
-                //{
-                //    // Add data to combo box
-                //    cmbxRubricLevel.Items.Add(reader3["MeasurementLevel"].ToString());
-                //}
-                //reader3.Close();
-              
-
             }
             ////   Display the signal
             if (cmbxRubricLevel.Items.Count == 0 && cmbxQuestion.Items.Count > 0)
@@ -166,14 +145,30 @@ namespace Application_CLOs
             ////Retrive Registration Number
             query = "SELECT S.RegistrationNumber \r\nFROM Student S\r\nWHERE ID=" + studentId;
             txtbxRegistrationNumber.Text = queryData(query);
-            
-            //bindAssessmentQuestions();
-            //bindMeasuremntLevel();
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            if (isForUpdateResult==false)
+            {//INSERT DATA
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd1 = new SqlCommand("INSERT into StudentResult values  (@StudentID, @AssessmentComponentID,@RubricMearumentID,GETDATE())", con);
+                cmd1.Parameters.AddWithValue("@StudentID", studentId);
+                cmd1.Parameters.AddWithValue("@AssessmentComponentID", AssessmentComponentDL.GetAssesmentComponetId(cmbxQuestion.SelectedItem.ToString(), rubricId_, int.Parse(txtbxTotalMarks.Text)));
+                cmd1.Parameters.AddWithValue("@RubricMearumentID", RubricLevelDL.GetRubricLevelId(rubricId_, int.Parse(cmbxRubricLevel.SelectedItem.ToString())));
+                cmd1.ExecuteNonQuery();
+                lblMessage.Content = "Data Successfully Saved";
+            }
+            else if (isForUpdateResult)
+            {//UPDATE DATA
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd1 = new SqlCommand("UPDATE StudentResult SET RubricMeasurementId=@RubricMearumentID,EvaluationDatE=GETDATE() WHERE StudentID=@StudentID AND  AssessmentComponentId=@AssessmentComponentID", con);
+                cmd1.Parameters.AddWithValue("@StudentID", studentId);
+                cmd1.Parameters.AddWithValue("@AssessmentComponentID", AssessmentComponentDL.GetAssesmentComponetId(cmbxQuestion.SelectedItem.ToString(), rubricId_, int.Parse(txtbxTotalMarks.Text)));
+                cmd1.Parameters.AddWithValue("@RubricMearumentID", RubricLevelDL.GetRubricLevelId(rubricId_, int.Parse(cmbxRubricLevel.SelectedItem.ToString())));
+                cmd1.ExecuteNonQuery();
+                lblMessage.Content = "Data Successfully Updated";
+            }
+           
         }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -185,37 +180,32 @@ namespace Application_CLOs
             AddRubric addRubric = new AddRubric();
             addRubric.ShowDialog();
         }
-
         private void btnAssessmnet_Click(object sender, RoutedEventArgs e)
         {
             AddAssessment addAssessment = new AddAssessment();
             addAssessment.ShowDialog();
            
         }
-
         private void cmbxAssessmentName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int assessmentId = AssessmentDL.GetAssessemntIdFromTitle(cmbxAssessmentName.SelectedItem.ToString());
-            bindAssessmentQuestions(assessmentId);
+            if (isForUpdateResult == false)
+            {
+                int assessmentId = AssessmentDL.GetAssessemntIdFromTitle(cmbxAssessmentName.SelectedItem.ToString());
+                bindAssessmentQuestions(assessmentId);
+            }
         }
         private void cmbxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(cmbxQuestion.Items.Count > 0 && cmbxAssessmentName.Items.Count > 0)
+            if (cmbxQuestion.Items.Count > 0 && cmbxAssessmentName.Items.Count > 0)
             {
-                //int assessmentId = AssessmentDL.GetAssessemntIdFromTitle(cmbxAssessmentName.SelectedItem.ToString());
-                //int rubricId = AssessmentComponentDL.GetRubricIdFromAssesmentComponentName(cmbxQuestion.SelectedItem.ToString(), assessmentId);
                 int rubricId = AssessmentComponentDL.GetRubricId(cmbxAssessmentName.SelectedItem.ToString(), cmbxQuestion.SelectedItem.ToString());
                 bindMeasuremntLevel(rubricId);
                 ////Mapped CLO 
                 MappedCLOFromRubricID(rubricId);
                 ////Maximum Rubric Level
                 TotalMarks(rubricId);
-                ////Obtained Marks
-                ObtainedMarks();
-
-
+                rubricId_ = rubricId;
             }
-          
         }
         private void MappedCLOFromRubricID(int rubricId)
         {
@@ -224,26 +214,42 @@ namespace Application_CLOs
         }
         private void TotalMarks(int rubricId)
         {
-            string query = "SELECT Max(RL.MeasurementLevel)\r\nFROM RubricLevel RL\r\nWHERE RL.RubricId=" + rubricId;
-            txtbxTotalMarks.Text= queryData(query);
+            string query = "SELECT AC.TotalMarks FROM AssessmentComponent AC WHERE AC.RubricId= " + rubricId+ "AND AC.Name='"+cmbxQuestion.SelectedItem.ToString()+"'";
+            txtbxTotalMarks.Text = queryData(query);
         }
         private void ObtainedMarks()
         {
-            if(cmbxQuestion.Items.Count > 0 && cmbxAssessmentName.Items.Count > 0)
+            if (cmbxQuestion.Items.Count > 0 && cmbxAssessmentName.Items.Count > 0)
             {
-                txtbxObtainedMarks.Text = cmbxRubricLevel.SelectedItem.ToString();
-
+                   
+                string query = "DECLARE @StudentId AS int =" + studentId +
+                    " DECLARE @TotalMarks as float =(SELECT AC.TotalMarks FROM StudentResult SR JOIN AssessmentComponent AC ON SR.AssessmentComponentId=AC.Id WHERE SR.StudentId=@StudentId)\r\n" +
+                    "DECLARE @RubricId as float=(SELECT AC.RubricId FROM StudentResult SR JOIN AssessmentComponent AC ON SR.AssessmentComponentId=AC.Id WHERE SR.StudentId=@StudentId)\r\n" +
+                    "DECLARE @MaxLevel as float=( SELECT MAx(RL.MeasurementLevel) FROM RubricLevel RL WHERE RL.RubricId=@RubricId) " +
+                    "SELECT (" + int.Parse(cmbxRubricLevel.SelectedItem.ToString()) + "/@MaxLevel) *@TotalMarks\r\nFROM StudentResult SR\r\nJOIN Student S\r\nON S.Id=SR.StudentId\r\nWHERE SR.StudentId=@StudentId";
+                txtbxObtainedMarks.Text = queryData(query);
             }
+           
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             bindAssessmentTitle();
+        
         }
-
         private void cmbxRubricLevel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ////Obtained Marks
-            ObtainedMarks();
+            if (isForUpdateResult)
+            {
+                lblObtainedMarks.Visibility = Visibility.Visible;
+                txtbxObtainedMarks.Visibility = Visibility.Visible;
+                ////Obtained Marks
+                //ObtainedMarks();
+            }
+            else
+            {
+                lblObtainedMarks.Visibility = Visibility.Hidden;
+                txtbxObtainedMarks.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

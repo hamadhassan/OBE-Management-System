@@ -57,3 +57,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Result\AddStud
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Result\ViewStudentForMarkeResult.baml
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Result\ViewStudentResult.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Result\ViewStudentResult.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Result\StudentResultDashboard.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Result\StudentResultDashboard.baml

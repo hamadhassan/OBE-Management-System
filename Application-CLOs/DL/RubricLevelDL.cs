@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Application_CLOs
 {
@@ -58,6 +59,19 @@ namespace Application_CLOs
             }
             return false;
 
+        }
+        public static int GetRubricLevelId(int rubricId,int measurmentLevel)
+        {
+            LoadDataIntoList();
+            int id = -1;
+            foreach (RubricLevel s in rubricLevelsList)
+            {
+                if (s.RubricId == rubricId && s.MeasurmentLevel == measurmentLevel)
+                {
+                    return s.Id;
+                }
+            }
+            return id;
         }
 
     }

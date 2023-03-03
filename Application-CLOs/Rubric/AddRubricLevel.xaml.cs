@@ -252,6 +252,9 @@ namespace Application_CLOs
             addRubric.ShowDialog();
         }
 
-       
+        private void cmbxRubric_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

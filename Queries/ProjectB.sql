@@ -24,6 +24,23 @@ ON RL.RubricId=AC.RubricId
 WHERE SR.RubricMeasurementId=RL.Id
 
 
+SELECT * 
+FROM StudentAttendance SA
+
+SELECT Name FROM Lookup WHERE Category='ATTENDANCE_STATUS'
+
+
+SELECT S.Id,CONCAT(S.FirstName,' ',S.LastName) AS [Student Name],S.RegistrationNumber 
+FROM Student S 
+JOIN Lookup L
+ON L.LookupId=S.Status
+WHERE L.Category='STUDENT_STATUS' AND L.Name='Active'
+
+
+
+SELECT 
+
+
 ---------The Below statments for student id=6---------------------------
 DECLARE @StudentId AS int =6
 DECLARE @TotalMarks as float =(SELECT AC.TotalMarks FROM StudentResult SR JOIN AssessmentComponent AC ON SR.AssessmentComponentId=AC.Id WHERE SR.StudentId=@StudentId)

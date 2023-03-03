@@ -1,0 +1,69 @@
+﻿<Window x:Class="Application_CLOs.StudentAttendance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application_CLOs"
+        mc:Ignorable="d"
+        Title="StudentAttendance" Height="450" Width="800" Activated="Window_Activated">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="375*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="29*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="66*"/>
+                <ColumnDefinition Width="34*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="3" Margin="0,29,0,0" Grid.RowSpan="2"/>
+            <StackPanel Grid.Column="3"/>
+            <StackPanel x:Name="dtClassAttendance" Grid.Column="2" Margin="0,29,0,0" Grid.RowSpan="2">
+                <DatePicker/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,29,0,0" Grid.RowSpan="2">
+                <Label x:Name="lblDate" Content="Date *"/>
+            </StackPanel>
+            <StackPanel Margin="0,29,0,0" Grid.RowSpan="2"/>
+        </Grid>
+        <!--Data Gride Here-->
+        <DataGrid  Name="dgAttendance" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEdit" Content="Edit" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            
+                            <Button Name="btnDelete" Content="Delete"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Attendance">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox Name="cmbxAttendance" SelectedIndex="0">
+                                <ComboBoxItem Content="Apple" />
+                                <ComboBoxItem Content="Banana" />
+                                <ComboBoxItem Content="Orange" />
+                                
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Window>

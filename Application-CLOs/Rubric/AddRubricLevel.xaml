@@ -114,7 +114,7 @@
             </StackPanel>
             <StackPanel Grid.Row="6" Margin="0,19,0,0" Grid.RowSpan="2"/>
             <StackPanel Grid.Row="7">
-                <ComboBox x:Name="cmbxRubric" Width="206" Height="21"/>
+                <ComboBox x:Name="cmbxRubric" Width="206" Height="21" SelectionChanged="cmbxRubric_SelectionChanged"/>
             </StackPanel>
             <StackPanel Grid.Row="8">
                 <Label x:Name="lblMessage" Content="" Foreground="#FFC82530"/>

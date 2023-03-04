@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
           Title="Dashboard" Height="540" Width="930" WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="459*"/>

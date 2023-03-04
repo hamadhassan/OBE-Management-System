@@ -61,3 +61,9 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Application-CL
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Application-CLOs.csproj.CopyComplete
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Application-CLOs.exe
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Application-CLOs.pdb
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.Wpf.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.pdb
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.xml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.Wpf.pdb
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.Wpf.xml

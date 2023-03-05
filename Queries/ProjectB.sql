@@ -38,7 +38,7 @@ WHERE L.Category='STUDENT_STATUS' AND L.Name='Active'
 
 
 
-SELECT 
+SELECT * from Lookup
 
 
 ---------The Below statments for student id=6---------------------------
@@ -72,9 +72,43 @@ ON A.Id=AC.AssessmentId
 
 
 SELECT SR.StudentId,SR.AssessmentComponentId,SR.RubricMeasurementId,SR.EvaluationDate FROM StudentResult SR
+SELECT TOP 1 CA.Id FROM ClassAttendance CA ORDER BY CA.ID DESC
 
-
+SELECT CONCAT(S.FirstName,' ',S.LastName),S.RegistrationNumber FROM Student S WHERE S.Id=6
+SELECT L.Name FROM Lookup L WHERE L.Category='ATTENDANCE_STATUS'
 DELETE FROM StudentResult WHERE StudentId=24 AND AssessmentComponentId=5
+SELECT S.Id FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active'
+SELECT * FROM StudentAttendance
+SELECT * FROM ClassAttendance
+------------------------Attendance------------------------------------------------
+INSERT INTO ClassAttendance(AttendanceDate) VALUES(GETDATE())
+DECLARE @AttendanceStatus  INT = 1
+DECLARE @ClassAttendanceID  INT = (SELECT TOP 1 CA.Id FROM ClassAttendance CA ORDER BY CA.ID DESC)
+DECLARE @Counter  BIGINT = 0
+DECLARE @RowCount BIGINT = 0
+SET @Counter=0
+SELECT @RowCount =Count(S.Id) FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active'
+WHILE ( @Counter < @RowCount)
+BEGIN
+	DECLARE @idStudent as INT =(SELECT S.Id FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active' 
+	ORDER BY S.Id OFFSET @Counter ROWS   FETCH NEXT 1 ROWS ONLY)
+	INSERT INTO StudentAttendance(AttendanceId,StudentId,AttendanceStatus) VALUES(@ClassAttendanceID,@idStudent,@AttendanceStatus)
+    SET @Counter  = @Counter  + 1
+END
+
+------------------------------------------------------------------------
+SELECT CONCAT(S.FirstName,' ',S.LastName)AS [Student Name],S.RegistrationNumber,L.Name,S.Id,SA.AttendanceId
+FROM Student S
+JOIN StudentAttendance SA
+ON S.Id=SA.StudentId
+JOIN ClassAttendance CA
+ON CA.Id=SA.AttendanceId
+JOIN Lookup L
+ON L.LookupId=SA.AttendanceStatus
+WHERE CA.AttendanceDate='2023-03-06'
+ORDER BY RegistrationNumber
+
+---------------------------------------------------------------------------
 
 --STUDENTS
 --CRUD Operation
@@ -99,9 +133,9 @@ UPDATE StudentAttendance SET AttendanceStatus=0 WHERE  AttendanceId=5 AND Studen
 -- CLASS ATTRNDANCE (Class attendace ka bagar student attendance nahi lag sakti)
 SELECT * 
 FROM ClassAttendance
-INSERT INTO ClassAttendance(AttendanceDate) VALUES(GETDATE())
+INSERT INTO ClassAttendance(AttendanceDate) VALUES('2023-03-05')
 DELETE ClassAttendance WHERE ID=2
-UPDATE ClassAttendance SET AttendanceDate=GETDATE() where ID=5
+UPDATE ClassAttendance SET AttendanceDate='2023-03-06' where ID=20
 -- CLO 
 SELECT *
 FROM Clo

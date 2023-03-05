@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="StudentAttendance" Height="450" Width="800" Activated="Window_Activated">
+        Title="StudentAttendance" Height="450" Width="800" Activated="Window_Activated" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="59*"/>
-            <RowDefinition Height="375*"/>
+            <RowDefinition Height="345*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -25,45 +26,65 @@
             <StackPanel Grid.Column="3" Margin="0,29,0,0" Grid.RowSpan="2"/>
             <StackPanel Grid.Column="3"/>
             <StackPanel x:Name="dtClassAttendance" Grid.Column="2" Margin="0,29,0,0" Grid.RowSpan="2">
-                <DatePicker/>
+                <DatePicker x:Name="dateTimePicker" SelectedDateChanged="dateTimePicker_SelectedDateChanged" SelectedDateFormat="Long" Width="314"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="0,29,0,0" Grid.RowSpan="2">
-                <Label x:Name="lblDate" Content="Date *"/>
+                <Label x:Name="lblMode" Content="Catgeory *"/>
             </StackPanel>
             <StackPanel Margin="0,29,0,0" Grid.RowSpan="2"/>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <ComboBox x:Name="cmbxCategory" Width="314" Margin="0,5,0,0">
+                        <ComboBoxItem Content="New Attendance"/>
+                        <ComboBoxItem Content="Update Attendance"/>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Column="1">
+                <Label x:Name="lblDate" Content="Date *"/>
+            </StackPanel>
         </Grid>
         <!--Data Gride Here-->
-        <DataGrid  Name="dgAttendance" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <DataGrid  Name="dgAttendance" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,59,0,10" Grid.RowSpan="2">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Edit">
+                <DataGridTemplateColumn Header="More">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnEdit" Content="Edit" />
+                            <Button Name="btnMore" Content="More" Click="btnMore_Click" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Delete">
+                <DataGridTemplateColumn Header="Present">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            
-                            <Button Name="btnDelete" Content="Delete"/>
+                            <Button Name="btnPresent" Content="Present" Click="btnPresent_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Attendance">
+                <DataGridTemplateColumn Header="Absent">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox Name="cmbxAttendance" SelectedIndex="0">
-                                <ComboBoxItem Content="Apple" />
-                                <ComboBoxItem Content="Banana" />
-                                <ComboBoxItem Content="Orange" />
-                                
-                            </ComboBox>
+                            <Button Name="btnAbsent" Content="Absent" Click="btnAbsent_Click" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="69*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <Label x:Name="lblMessage" Content="" Foreground="#FFC82530"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Button x:Name="btnClose" Content="Close" Height="25" Width="100" Background="#FFC82530" Foreground="White" Click="btnClose_Click"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

@@ -76,6 +76,7 @@ namespace Application_CLOs
                     SqlCommand cmd = new SqlCommand("delete from student where id='" + id.ToString() + "'", con);
                     cmd.ExecuteNonQuery();
                     bindDataGrid();
+                   
                 }
             }
             catch

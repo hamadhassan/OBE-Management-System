@@ -80,6 +80,9 @@
     <Compile Include="BL\AssessmentComponent.cs" />
     <Compile Include="DL\AssessmentDL.cs" />
     <Compile Include="BL\Assessment.cs" />
+    <Compile Include="Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Result\AddStudentResult.xaml.cs">
       <DependentUpon>AddStudentResult.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Result\AddStudentResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -31,6 +31,7 @@ namespace Application_CLOs
         {
             InitializeComponent();
             timer();
+            bindDataGrid();
         }
         private void bindDataGrid()
         {

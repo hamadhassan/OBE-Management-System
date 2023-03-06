@@ -29,6 +29,8 @@ namespace Application_CLOs
             InitializeComponent();
             timer();
             cmbxCLO.SelectedIndex= 0;
+            bindDataGrid();
+            bindCLOName();
         }
         private void bindDataGrid()
         {

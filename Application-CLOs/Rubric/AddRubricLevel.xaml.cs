@@ -30,6 +30,8 @@ namespace Application_CLOs
         {
             InitializeComponent();
             timer();
+            bindDataGrid();
+            bindRrubricName();
             cmbxRubric.SelectedIndex = 0;
         }
         private void bindDataGrid()
@@ -52,6 +54,7 @@ namespace Application_CLOs
                 // Add data to combo box
                 cmbxRubric.Items.Add(reader["Details"].ToString());
             }
+            reader.Close();
         }
         private void Window_Activated(object sender, EventArgs e)
         {

@@ -36,6 +36,8 @@ namespace Application_CLOs
         {
             InitializeComponent();
             loadStatusOfStudent();
+            cmbxStatus.SelectedIndex = 0;
+            timer();
 
         }
         // This construcotor is used for EDIT THE STUDENT
@@ -52,6 +54,8 @@ namespace Application_CLOs
             loadStudentForEdit();
             loadStatusOfStudent();
             lblAddStudent.Content = "Update Student Record";
+            cmbxStatus.SelectedIndex = 0;
+            timer();
 
         }
         private void loadStudentForEdit()

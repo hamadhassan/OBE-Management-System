@@ -23,6 +23,16 @@ namespace Application_CLOs
         public StudentDashboard()
         {
             InitializeComponent();
+            loadData();
+        }
+        private void loadData()
+        {
+            string query = "SELECT COUNT(S.RegistrationNumber) FROM student S";
+            lblCountTotalStudent.Content = queryData(query);
+            query = "SELECT COUNT(L.Name) FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS' AND L.Name='Active'";
+            lblCountActive.Content = queryData(query);
+            query = "SELECT COUNT(L.Name) FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS' AND L.Name='InActive'";
+            lblCountInactive.Content = queryData(query);
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
@@ -87,12 +97,7 @@ namespace Application_CLOs
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            string query = "SELECT COUNT(S.RegistrationNumber) FROM student S";
-            lblCountTotalStudent.Content = queryData(query);
-            query = "SELECT COUNT(L.Name) FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS' AND L.Name='Active'";
-            lblCountActive.Content = queryData(query);
-            query = "SELECT COUNT(L.Name) FROM Student S JOIN Lookup  L ON L.LookupId=S.Status \r\nWHERE  L.Category='STUDENT_STATUS' AND L.Name='InActive'";
-            lblCountInactive.Content = queryData(query);
+            
         }
     }
 }

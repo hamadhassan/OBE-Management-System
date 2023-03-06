@@ -69,3 +69,5 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.Wpf
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\LiveCharts.Wpf.xml
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Student\StudentAttendanceMore.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Student\StudentAttendanceMore.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Main.g.cs
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Main.baml

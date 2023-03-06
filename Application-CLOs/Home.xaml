@@ -6,31 +6,154 @@
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
           Title="Dashboard" Height="540" Width="930" WindowStartupLocation="CenterScreen">
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="459*"/>
-            <RowDefinition Height="65*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <!--Bottom Navigation-->
-        <Grid Grid.Row="1" Margin="0,10,0,0">
-            <Grid.ColumnDefinitions>
+        <Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="29*"/>
+                    <ColumnDefinition Width="157*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Margin="15,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="84*"/>
+                        <RowDefinition Height="425*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="5,5,5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="#FF5046B9">
+                            <Label Content="Assessment" Foreground="White" FontWeight="Bold"/>
+                            <Label x:Name="lblTotalAssessment" Content="00" Foreground="#FFFBFBFB"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Background="#FF5046B9">
+                            <Label Content="Question" Foreground="White" FontWeight="Bold"/>
+                            <Label x:Name="lblTotalQuestion" Content="00" Foreground="#FFFBFBFB"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Background="#FF5046B9">
+                            <Label Content="Rubric" Foreground="White" FontWeight="Bold"/>
+                            <Label x:Name="lblTotalRubric" Content="00" Foreground="#FFFBFBFB"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Background="#FF5046B9">
+                            <Label Content="Levels" Foreground="White" FontWeight="Bold"/>
+                            <Label x:Name="lblTotalLevels" Content="00" Foreground="#FFFBFBFB"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4" Background="#FF5046B9">
+                            <Label Content="CLOs" Foreground="White" FontWeight="Bold"/>
+                            <Label x:Name="lblTotalCLOs" Content="00" Foreground="#FFFBFBFB"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="5" Background="#FF5046B9">
+                            <Label Content="Attendance" Foreground="White" FontWeight="Bold"/>
+                            <Label x:Name="lblTotalAttendance" Content="00" Foreground="#FFFBFBFB"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="6" Background="#FF5046B9"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="36*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36*"/>
+                            <ColumnDefinition Width="37*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="4*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <Label Content="Top Student Marks"/>
+                            </StackPanel>
+                            <DataGrid x:Name="dg1" Margin="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="4*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <Label Content="Most Punctional Students"/>
+                            </StackPanel>
+                            <DataGrid   x:Name="dg2" Margin="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="29*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <Label Content="Assessments"/>
+                            </StackPanel>
+                            <DataGrid  x:Name="dg3" Margin="5,5,5,10" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="29*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <Label Content="CLOs"/>
+                            </StackPanel>
+                            <DataGrid  x:Name="dg4" Margin="5,5,5,10" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Background="#FFEEEDF1" Margin="10,10,5,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="69*"/>
+                        <RowDefinition Height="69*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="43.764"/>
+                        <RowDefinition Height="58*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="10,10,10,10" Background="#FF5046B9">
+                        <Label Content="Total Student " Foreground="White" FontWeight="Bold"/>
+                        <Label Margin="0,-2,0,0" x:Name="lblTotalStudent" Content="00" Foreground="White" HorizontalAlignment="Center" Width="166" HorizontalContentAlignment="Center" Height="23"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <Label Content="Quick Actions " HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                        <Label Content="Do someting quickly"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <Button x:Name="btnView_Student" Content="View Student" Height="43" Background="#FFECF2FF"  Width="120" Click="btnView_Student_Click_1"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <Button x:Name="btnMark_Attendance" Content="Mark Attendance" Height="43" Background="#FFECF2FF"  Width="120" Click="btnMark_Attendance_Click"/>
 
-            </Grid.ColumnDefinitions>
-            <Rectangle Grid.Row="1" Fill="#FF5046B9"></Rectangle>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnAssessment" Content="Assessment" Foreground="White"  Background="#FF5046B9" FontWeight="Bold" Height="55" Width="100" BorderBrush="#FF5046B9"/>
-                <Button x:Name="btnQuestions" Content="Question" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" />
-                <Button x:Name="btnRubric" Content="Rubric" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnRubric_Click"/>
-                <Button x:Name="btnLevels" Content="Levels" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnLevels_Click"/>
-                <Button x:Name="btnDashboard" Content="Dashboard" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnDashboard_Click"/>
-                <Button x:Name="btnStudent" Content="Student" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnStudent_Click"/>
-                <Button x:Name="btnAttendance" Content="Attendance" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
-                <Button x:Name="btnResult" Content="Result" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9"/>
-                <Button x:Name="btnCLOs" Content="CLOs" Foreground="White" FontWeight="Bold" Background="#FF5046B9" Height="55" Width="100" BorderBrush="#FF5046B9" Click="btnCLOs_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4">
+                        <Button x:Name="btnView_Result" Content="View Result" Height="43" Background="#FFECF2FF"  Width="120" Click="btnView_Result_Click"/>
 
-            </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" >
+                        <Button x:Name="btnAdd_Assessment" Content="Add Assessment" Height="43" Background="#FFECF2FF"  Width="120" Click="btnAdd_Assessment_Click"/>
 
+                    </StackPanel>
+                    <StackPanel Grid.Row="7">
+                        <Button x:Name="btnAdd_Rubric" Content="Add Rubric" Height="43" Background="#FFECF2FF"  Width="120" Click="btnAdd_Rubric_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6">
+                        <Button x:Name="btnAdd_Questions" Content="Add Questions" Height="43" Background="#FFECF2FF"  Width="120" Click="btnAdd_Questions_Click"/>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
         </Grid>
 
     </Grid>

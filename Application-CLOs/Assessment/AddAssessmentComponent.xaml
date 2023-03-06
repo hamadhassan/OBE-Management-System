@@ -92,33 +92,31 @@
                     </StackPanel>
 
                 </Grid>
-                <StackPanel Margin="0,0,0,1">
+                <StackPanel>
                     <Label x:Name="lblName" Content="Name *"/>
                 </StackPanel>
-                <StackPanel Margin="0,4,0,22" Grid.Row="1" Grid.RowSpan="2">
+                <StackPanel Grid.Row="1">
                     <TextBox x:Name="txtbxName" TextWrapping="Wrap" Width="202" Height="48" TextChanged="txtbxDetail_TextChanged"/>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Margin="0,1,0,19" Grid.RowSpan="2"/>
-                <StackPanel Grid.Row="2" Margin="0,1,0,19" Grid.RowSpan="2">
+                <StackPanel Grid.Row="2">
                     <Label x:Name="lblSignalName" Content="" Foreground="#FFC82530"/>
                 </StackPanel>
-                <StackPanel Grid.Row="2" Margin="0,20,0,19" Grid.RowSpan="3">
+                <StackPanel Grid.Row="3">
                     <Label x:Name="lblMarks" Content="Marks *"/>
                 </StackPanel>
-                <StackPanel Grid.Row="3" Margin="0,19,0,22" Grid.RowSpan="3">
+                <StackPanel Grid.Row="4">
                     <TextBox x:Name="txtbxMarks" TextWrapping="Wrap" Width="205" TextChanged="txtbxMarks_TextChanged"/>
                 </StackPanel>
-                <StackPanel Grid.Row="4" Margin="0,19,0,18" Grid.RowSpan="3">
+                <StackPanel Grid.Row="5">
                     <Label x:Name="lblSignalMarks" Content="" Foreground="#FFC82530"/>
                 </StackPanel>
-                <StackPanel Grid.Row="6" Margin="0,0,0,13" Grid.RowSpan="2">
+                <StackPanel Grid.Row="6">
                     <Label x:Name="lblcmbx" Content="Rubric *"/>
                 </StackPanel>
-                <StackPanel Grid.Row="6" Margin="0,19,0,22" Grid.RowSpan="3"/>
-                <StackPanel Grid.Row="7" Margin="0,0,0,22" Grid.RowSpan="2">
+                <StackPanel Grid.Row="7">
                     <ComboBox x:Name="cmbxRubric" Width="205" Height="21"/>
                 </StackPanel>
-                <StackPanel Grid.Row="8" Margin="0,0,0,19" Grid.RowSpan="2">
+                <StackPanel Grid.Row="8">
                     <Label x:Name="lblAssessment" Content="Assessment *" Foreground="Black"/>
                 </StackPanel>
                 <StackPanel Grid.Row="9">

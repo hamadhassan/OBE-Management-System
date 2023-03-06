@@ -32,6 +32,9 @@ namespace Application_CLOs
             timer();
             cmbxRubric.SelectedIndex = 0;
             cmbxAssessment.SelectedIndex = 0;
+            bindDataGrid();
+            bindRubricName();
+            bindAssessmentTitle();
         }
         private void bindDataGrid()
         {
@@ -53,17 +56,20 @@ namespace Application_CLOs
                 // Add data to combo box
                 cmbxRubric.Items.Add(reader2["Details"].ToString());
             }
+
+            reader2.Close();
         }
         private void bindAssessmentTitle()
         {
             var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT A.Title\r\nFROM Assessment A", con);
+            SqlCommand cmd = new SqlCommand("SELECT A.Title FROM Assessment A", con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 // Add data to combo box
                 cmbxAssessment.Items.Add(reader["Title"].ToString());
             }
+            reader.Close();
         }
         private void Window_Activated_1(object sender, EventArgs e)
         {

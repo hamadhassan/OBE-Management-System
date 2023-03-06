@@ -1,3 +1,44 @@
+SELECT  DISTINCT TOP 5 CONCAT(S.FirstName,' ',S.LastName)AS [Student Name],S.RegistrationNumber
+FROM Student S
+JOIN StudentAttendance SA
+ON SA.StudentId=S.Id
+JOIN ClassAttendance CA
+ON CA.Id=SA.AttendanceId
+JOIN Lookup L
+ON L.LookupId=SA.AttendanceStatus
+WHERE L.Name='Present'
+ORDER BY S.RegistrationNumber DESC 
+
+SELECT A.Title AS Name, A.TotalMarks,A.TotalWeightage FROM Assessment A
+
+SELECT C.Name as [CLO Name],R.Details AS [Rubric Name] FROM Clo C JOIN Rubric R ON R.CloId=c.Id
+-------------------------------------------------------------------------------------------
+DECLARE @MaxLevel as float=( SELECT MAx(RL.MeasurementLevel) FROM RubricLevel RL WHERE RL.RubricId IN (SELECT AC.RubricId FROM StudentResult SR JOIN AssessmentComponent AC ON SR.AssessmentComponentId=AC.Id))
+SELECT TOP 3 CONCAT(S.FirstName,' ',S.LastName) AS [Student Name],A.Title AS [Assessmmet Name],
+(RL.MeasurementLevel/@MaxLevel)*AC.TotalMarks AS[Obtained Marks]
+FROM StudentResult SR
+JOIN Student S
+ON S.Id=SR.StudentId
+JOIN RubricLevel RL
+ON RL.Id=SR.RubricMeasurementId
+JOIN Rubric R
+ON R.Id=RL.RubricId
+JOIN AssessmentComponent AC
+ON AC.ID=SR.AssessmentComponentId
+JOIN Assessment A
+ON A.Id=AC.AssessmentId
+ORDER BY [Obtained Marks] DESC
+
+
+
+-----------------------------------------------------
+SELECT COUNT(ID) FROM Assessment
+SELECT COUNT(AC.Id) FROM AssessmentComponent AC
+SELECT COUNT(R.Id) FROM Rubric R
+SELECT COUNT(RL.Id) FROM RubricLevel RL
+SELECT COUNT(C.Id) FROM Clo C
+SELECT COUNT(CA.Id) FROM ClassAttendance CA
+------------------------------------------------------------------------------------------
 SELECT S.id,S.FirstName,S.lastname,S.Contact,S.email,S.RegistrationNumber
 FROM StudentResult SR
 JOIN Student S

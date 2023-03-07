@@ -1,3 +1,5 @@
+
+--------------------------------------------------------------------------------
 SELECT  DISTINCT TOP 5 CONCAT(S.FirstName,' ',S.LastName)AS [Student Name],S.RegistrationNumber
 FROM Student S
 JOIN StudentAttendance SA
@@ -12,10 +14,11 @@ ORDER BY S.RegistrationNumber DESC
 SELECT A.Title AS Name, A.TotalMarks,A.TotalWeightage FROM Assessment A
 
 SELECT C.Name as [CLO Name],R.Details AS [Rubric Name] FROM Clo C JOIN Rubric R ON R.CloId=c.Id
--------------------------------------------------------------------------------------------
+-----------------------------------STUDENT RESULT--------------------------------------------------------
 DECLARE @MaxLevel as float=( SELECT MAx(RL.MeasurementLevel) FROM RubricLevel RL WHERE RL.RubricId IN (SELECT AC.RubricId FROM StudentResult SR JOIN AssessmentComponent AC ON SR.AssessmentComponentId=AC.Id))
-SELECT TOP 3 CONCAT(S.FirstName,' ',S.LastName) AS [Student Name],A.Title AS [Assessmmet Name],
-(RL.MeasurementLevel/@MaxLevel)*AC.TotalMarks AS[Obtained Marks]
+DECLARE @AllComponentTotalMarks as float=(SELECT SUM(A.TotalMarks) FROM StudentResult SR JOIN AssessmentComponent AC ON SR.AssessmentComponentId=AC.Id JOIN Assessment A ON A.Id=AC.AssessmentId)
+SELECT  CONCAT(S.FirstName,' ',S.LastName) AS [Student Name],A.Title AS [Assessmmet Name],
+(RL.MeasurementLevel/@MaxLevel)*AC.TotalMarks AS[Obtained Marks],@AllComponentTotalMarks AS [Total Marks]
 FROM StudentResult SR
 JOIN Student S
 ON S.Id=SR.StudentId

@@ -21,11 +21,12 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="1">
                 <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Width="425"/>
+                <Button Content="Button" Click="Button_Click"/>
             </StackPanel>
 
         </Grid>
         <Grid Grid.Row="1" Margin="2,2,2,2">
-            <DataGrid x:Name="dgStudent" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <DataGrid CanUserAddRows="False" x:Name="dgStudent" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Add Assessment">
                         <DataGridTemplateColumn.CellTemplate>

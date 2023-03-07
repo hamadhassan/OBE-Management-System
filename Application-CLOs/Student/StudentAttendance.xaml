@@ -48,7 +48,7 @@
             </StackPanel>
         </Grid>
         <!--Data Gride Here-->
-        <DataGrid  Name="dgAttendance" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,59,0,10" Grid.RowSpan="2">
+        <DataGrid CanUserAddRows="False" Name="dgAttendance" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,59,0,10" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="More">
                     <DataGridTemplateColumn.CellTemplate>

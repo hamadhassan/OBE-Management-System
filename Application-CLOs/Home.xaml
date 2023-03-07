@@ -76,7 +76,7 @@
                             <StackPanel>
                                 <Label Content="Top Student Marks"/>
                             </StackPanel>
-                            <DataGrid x:Name="dg1" Margin="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                            <DataGrid CanUserAddRows="False" x:Name="dg1" Margin="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                         </Grid>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -86,7 +86,7 @@
                             <StackPanel>
                                 <Label Content="Most Punctional Students"/>
                             </StackPanel>
-                            <DataGrid   x:Name="dg2" Margin="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                            <DataGrid CanUserAddRows="False"  x:Name="dg2" Margin="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
@@ -96,7 +96,7 @@
                             <StackPanel>
                                 <Label Content="Assessments"/>
                             </StackPanel>
-                            <DataGrid  x:Name="dg3" Margin="5,5,5,10" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                            <DataGrid CanUserAddRows="False" x:Name="dg3" Margin="5,5,5,10" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="1">
                             <Grid.RowDefinitions>
@@ -106,7 +106,7 @@
                             <StackPanel>
                                 <Label Content="CLOs"/>
                             </StackPanel>
-                            <DataGrid  x:Name="dg4" Margin="5,5,5,10" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                            <DataGrid CanUserAddRows="False" x:Name="dg4" Margin="5,5,5,10" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                         </Grid>
                     </Grid>
                 </Grid>

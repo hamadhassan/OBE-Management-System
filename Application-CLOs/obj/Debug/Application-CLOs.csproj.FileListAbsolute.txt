@@ -71,3 +71,6 @@ D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Student\Studen
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Student\StudentAttendanceMore.baml
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Main.g.cs
 D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\obj\Debug\Main.baml
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\BouncyCastle.Crypto.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\itextsharp.dll
+D:\COMPUTER SCIENCE\CS-263 Project-CLO\Application-CLOs\bin\Debug\itextsharp.xml

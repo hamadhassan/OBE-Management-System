@@ -18,7 +18,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <DataGrid Grid.Row="1" x:Name="dgCLOs" d:ItemsSource="{d:SampleData ItemCount=5}" Height="365" Width="570">
+            <DataGrid CanUserAddRows="False" Grid.Row="1" x:Name="dgCLOs" d:ItemsSource="{d:SampleData ItemCount=5}" Height="365" Width="570">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Edit">
                         <DataGridTemplateColumn.CellTemplate>

@@ -24,7 +24,7 @@
             <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Text="Search Here" Width="624" TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="18"/>
 
         </Grid>
-        <DataGrid x:Name="dgStudent" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,44,0,0" Grid.RowSpan="2">
+        <DataGrid CanUserAddRows="False" x:Name="dgStudent" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,44,0,0" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Edit">
                     <DataGridTemplateColumn.CellTemplate>

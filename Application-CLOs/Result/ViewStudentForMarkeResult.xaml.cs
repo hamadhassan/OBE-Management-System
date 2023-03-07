@@ -13,6 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace Application_CLOs
 {
@@ -60,6 +63,10 @@ namespace Application_CLOs
           
         }
 
-      
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+       
     }
 }

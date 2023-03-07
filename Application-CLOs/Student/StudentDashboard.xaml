@@ -99,10 +99,10 @@
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Average Marks"/>
                 </StackPanel>
-                <DataGrid Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                <DataGrid Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                <DataGrid Grid.Row="3" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                <DataGrid Grid.Column="1" Grid.Row="3" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <DataGrid CanUserAddRows="False" x:Name="dg1" Margin="2" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <DataGrid CanUserAddRows="False" x:Name="dg2" Margin="2" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <DataGrid CanUserAddRows="False" x:Name="dg3" Margin="2" Grid.Row="3" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <DataGrid CanUserAddRows="False" x:Name="dg4" Margin="2" Grid.Column="1" Grid.Row="3" d:ItemsSource="{d:SampleData ItemCount=5}"/>
             </Grid>
         </Grid>
 

@@ -6,3 +6,10 @@ Open the edit CLO window from rubirc is not working but direclty open work
 Make singlton class
 
 ON ONE DATE ONLY ONE ATTENDANCE 
+
+
+
+
+ATTENDANCE SHOULD BE MARKED ON TODAY AND PRVIOUS DAY
+
+DELETE CLO AND ITS ALL COMPONENTS 

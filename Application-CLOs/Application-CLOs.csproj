@@ -90,6 +90,7 @@
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports.cs" />
     <Compile Include="Result\AddStudentResult.xaml.cs">
       <DependentUpon>AddStudentResult.xaml</DependentUpon>
     </Compile>

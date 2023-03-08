@@ -17,6 +17,8 @@ using System.Collections;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
+using Microsoft.Win32;
+using iTextSharp.text.pdf.draw;
 
 namespace Application_CLOs
 {
@@ -96,98 +98,11 @@ namespace Application_CLOs
         private void Window_Activated(object sender, EventArgs e)
         {
             bindDataGrid();
-            GenerateReport();
-            MessageBox.Show("PDF report generated successfully.");
+           
         }
-        public void GenerateReport()
-        {
-            Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("report.pdf", FileMode.Create));
-            document.AddCreationDate();
-            document.AddAuthor("Your Name");
-            document.AddTitle("Report Title");
-            document.Open();
 
-            // Create a header table
-            PdfPTable headerTable = new PdfPTable(1);
-            headerTable.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
-            headerTable.DefaultCell.Border = 0;
-
-            // Add text to the header
-            PdfPCell headerCell = new PdfPCell(new Phrase("My Report"));
-            headerCell.Border = 0;
-            headerTable.AddCell(headerCell);
-
-            // Add the header table to the document
-            document.Add(headerTable);
-
-
-            PdfPTable table = new PdfPTable(4);
-            table.AddCell("FirstName");
-            table.AddCell("LastName");
-            table.AddCell("RegistrationNumber");
-            table.AddCell("Contact");
-
-
-            //Paragraph paragraph = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae nulla euismod, tristique elit ut, euismod elit. Nam vel enim quis mi bibendum tincidunt.");
-            //document.Add(paragraph);
-
-
-
-            //// Add the image to the header
-            //iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance("graphic.png");
-            //logo.ScalePercent(50);
-            //PdfPCell logoCell = new PdfPCell(logo);
-            //logoCell.HorizontalAlignment = Element.ALIGN_LEFT;
-            //logoCell.Border = PdfPCell.NO_BORDER;
-            //table.AddCell(logoCell);
-
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT S.FirstName,S.LastName,S.RegistrationNumber,S.Contact FROM Student S", con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                table.AddCell(reader["FirstName"].ToString());
-                table.AddCell(reader["LastName"].ToString());
-                table.AddCell(reader["RegistrationNumber"].ToString());
-                table.AddCell(reader["Contact"].ToString());
-            }
-            reader.Close();
-            document.Add(table);
-
-            // Add an image to the header
-            string imagePath = "graphic.png";
-            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(imagePath);
-            PdfPCell logoCell = new PdfPCell(logo, true);
-            logoCell.Border = 0;
-            headerTable.AddCell(logoCell);
-
-            // Add some content to the PDF document
-            iTextSharp.text.Paragraph paragraph = new iTextSharp.text.Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae nulla euismod, tristique elit ut, euismod elit. Nam vel enim quis mi bibendum tincidunt.");
-            document.Add(paragraph);
-
-            // Create a footer table
-            PdfPTable footerTable = new PdfPTable(1);
-            footerTable.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
-            footerTable.DefaultCell.Border = 0;
-
-
-            // Add text to the footer
-            PdfPCell footerCell = new PdfPCell(new Phrase("Page " + writer.PageNumber));
-            footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            footerCell.Border = 0;
-            footerTable.AddCell(footerCell);
-
-            // Add the footer table to the document
-            document.Add(footerTable);
-            // Set the background color of the PDF document
-            BaseColor backgroundColor = new BaseColor(255, 255, 204);
-            PdfContentByte canvas = writer.DirectContentUnder;
-            iTextSharp.text.Rectangle rect = new iTextSharp.text.Rectangle(document.PageSize);
-            rect.BackgroundColor = backgroundColor;
-            canvas.Rectangle(rect);
-
-            document.Close();
-        }
+       
+      
+        
     }
 }

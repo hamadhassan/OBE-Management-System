@@ -38,12 +38,19 @@ namespace Application_CLOs
         }
         private void bindDataGrid()
         {
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT AC.ID ,AC.Name AS [Question Detail],AC.TotalMarks AS [Question Marks],A.Title AS [Assessment Title],\r\nA.TotalMarks AS [Assessment Total Marks], A.TotalWeightage AS [Assessment Weightage], R.Details AS [Rubric Name],C.Name AS[Mapped CLO]\r\nFROM AssessmentComponent AC\r\nJOIN Assessment A\r\nON AC.AssessmentId=A.Id\r\nJOIN Rubric R\r\nON AC.RubricId=R.Id\r\nJOIN CLO C\r\nON R.CloId=C.Id", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgAssessment.ItemsSource = dt.DefaultView;
+            try
+            {
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd = new SqlCommand("SELECT AC.ID ,AC.Name AS [Question Detail],AC.TotalMarks AS [Question Marks],A.Title AS [Assessment Title],\r\nA.TotalMarks AS [Assessment Total Marks], A.TotalWeightage AS [Assessment Weightage], R.Details AS [Rubric Name],C.Name AS[Mapped CLO]\r\nFROM AssessmentComponent AC\r\nJOIN Assessment A\r\nON AC.AssessmentId=A.Id\r\nJOIN Rubric R\r\nON AC.RubricId=R.Id\r\nJOIN CLO C\r\nON R.CloId=C.Id", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgAssessment.ItemsSource = dt.DefaultView;
+
+            }
+            catch { }
+
+          
 
         }
         private void bindRubricName()
@@ -122,6 +129,7 @@ namespace Application_CLOs
 
             if (ValidateName(txtbxName.Text) == true && ValidateMarks(txtbxMarks.Text) == true)
             {
+                
                 /// This command retrive the Rubric ID corresponding to the detail of rubric
                 var con = Configuration.getInstance().getConnection();
                 string query = "SELECT ID FROM Rubric WHERE Details='" + cmbxRubric.Text + "'";
@@ -132,15 +140,24 @@ namespace Application_CLOs
                 SqlCommand cmd1 = new SqlCommand(query1, con);
                 int assessmnetID = int.Parse(cmd1.ExecuteScalar().ToString());
                 /// Now the input data will be stored into the database
-                SqlCommand cmd3 = new SqlCommand("INSERT into AssessmentComponent values (@Name,@RubricID,@TotalMarks,GETDATE(),GETDATE(),@AssessmentID)", con);
-                cmd3.Parameters.AddWithValue("@Name", txtbxName.Text);
-                cmd3.Parameters.AddWithValue("@RubricID", rubricID);
-                cmd3.Parameters.AddWithValue("@TotalMarks", int.Parse(txtbxMarks.Text));
-                cmd3.Parameters.AddWithValue("@AssessmentID", assessmnetID);
-                cmd3.ExecuteNonQuery();
-                lblMessage.Content = "Data Successfully Saved";
-                bindDataGrid();
-                ClearAllFields();
+                if (MarksValidationFromDataBase(assessmnetID))
+                {
+                    SqlCommand cmd3 = new SqlCommand("INSERT into AssessmentComponent values (@Name,@RubricID,@TotalMarks,GETDATE(),GETDATE(),@AssessmentID)", con);
+                    cmd3.Parameters.AddWithValue("@Name", txtbxName.Text);
+                    cmd3.Parameters.AddWithValue("@RubricID", rubricID);
+                    cmd3.Parameters.AddWithValue("@TotalMarks", int.Parse(txtbxMarks.Text));
+                    cmd3.Parameters.AddWithValue("@AssessmentID", assessmnetID);
+                    cmd3.ExecuteNonQuery();
+                    lblMessage.Content = "Data Successfully Saved";
+                    bindDataGrid();
+                    ClearAllFields();
+
+                }
+                else
+                {
+                    lblMessage.Content = "Marks should be less than total Marks";
+                }
+            
 
             }
             else
@@ -168,15 +185,23 @@ namespace Application_CLOs
                         SqlCommand cmd1 = new SqlCommand(query1, con);
                         int assessmnetID = int.Parse(cmd1.ExecuteScalar().ToString());
                         // Now the input data will be updated into the database
-                        SqlCommand cmd3 = new SqlCommand("Update AssessmentComponent SET Name=@Name, RubricID=@RubricID,TotalMarks=@TotalMarks ,DateUpdated=GETDATE(),AssessmentID=@AssessmentID WHERE ID=" + id_ + "", con);
-                        cmd3.Parameters.AddWithValue("@Name", txtbxName.Text);
-                        cmd3.Parameters.AddWithValue("@RubricID", rubricID);
-                        cmd3.Parameters.AddWithValue("@TotalMarks", int.Parse(txtbxMarks.Text));
-                        cmd3.Parameters.AddWithValue("@AssessmentID", assessmnetID);
-                        cmd3.ExecuteNonQuery();
-                        lblMessage.Content = "Data Successfully Updated";
-                        bindDataGrid();
-                        ClearAllFields();
+                        if (MarksValidationFromDataBaseForUpdate(assessmnetID,id_))
+                        {
+                            SqlCommand cmd3 = new SqlCommand("Update AssessmentComponent SET Name=@Name, RubricID=@RubricID,TotalMarks=@TotalMarks ,DateUpdated=GETDATE(),AssessmentID=@AssessmentID WHERE ID=" + id_ + "", con);
+                            cmd3.Parameters.AddWithValue("@Name", txtbxName.Text);
+                            cmd3.Parameters.AddWithValue("@RubricID", rubricID);
+                            cmd3.Parameters.AddWithValue("@TotalMarks", int.Parse(txtbxMarks.Text));
+                            cmd3.Parameters.AddWithValue("@AssessmentID", assessmnetID);
+                            cmd3.ExecuteNonQuery();
+                            lblMessage.Content = "Data Successfully Updated";
+                            bindDataGrid();
+                            ClearAllFields();
+                        }
+                        else
+                        {
+                            lblMessage.Content = "Marks should be less than total Marks";
+                        }
+                      
                     }
                     else
                     {
@@ -195,7 +220,49 @@ namespace Application_CLOs
             }
 
         }
-
+        private string queryData(string query)
+        {
+            var con = Configuration.getInstance().getConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            string output = cmd.ExecuteScalar().ToString();
+            return output;
+        }
+        private bool  MarksValidationFromDataBase(int assessmentId)
+        {
+            string query = "SELECT SUM(AC.TotalMarks) FROM Assessment A JOIN AssessmentComponent AC ON A.Id=AC.AssessmentId WHERE A.Id="+ assessmentId;
+            object  obj =queryData(query);
+            if (obj == null)
+            {
+                int existingMarks = int.Parse(queryData(query));
+                query = "SELECT A.TotalMarks FROM Assessment A  WHERE A.Id=" + assessmentId;
+                int totalMarks = int.Parse(queryData(query));
+                int enterMarks = int.Parse(txtbxMarks.Text);
+                if (existingMarks + enterMarks <= totalMarks)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool MarksValidationFromDataBaseForUpdate(int assessmentId,int componentId)
+        {
+            string query = "SELECT SUM(AC.TotalMarks) FROM Assessment A JOIN AssessmentComponent AC ON A.Id=AC.AssessmentId WHERE A.Id=" + assessmentId;
+            int existingMarks = int.Parse(queryData(query));
+            query = "SELECT A.TotalMarks FROM Assessment A  WHERE A.Id=" + assessmentId;
+            int totalMarks = int.Parse(queryData(query));
+            int enterMarks = int.Parse(txtbxMarks.Text);
+            query = "SELECT AC.TotalMarks FROM AssessmentComponent AC WHERE AC.Id=" + componentId;
+            int subSpecficMarks = int.Parse(queryData(query));
+            if ((existingMarks + enterMarks)- subSpecficMarks <= totalMarks)
+            {
+                return true;
+            }
+            return false;
+        }
         private void timer()
         {
             DispatcherTimer dtClockTime = new DispatcherTimer();
@@ -252,6 +319,7 @@ namespace Application_CLOs
         }
         private void txtbxMarks_TextChanged(object sender, TextChangedEventArgs e)
         {
+
             if (ValidateMarks(txtbxMarks.Text) == false)
             {
                 lblSignalMarks.Content = "Enter Marks";

@@ -5,14 +5,116 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="StudentResultDashboard" Height="450" Width="800">
+        Title="StudentResultDashboard" Height="480" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="127*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="409*"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnMarkResult" Content="Mark Result" HorizontalAlignment="Left" Margin="200,179,0,0" VerticalAlignment="Top" Click="btnMarkResult_Click"/>
-        <Button Content="View Student Result" HorizontalAlignment="Left" Margin="325,189,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="199*"/>
+                <RowDefinition Height="235*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24*"/>
+                    <ColumnDefinition Width="24*"/>
+                    <ColumnDefinition Width="24*"/>
+                    <ColumnDefinition Width="24*"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="99*"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Background="#FF5046B9">
+                    <Label Content="Result CLOs Wise" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnResultCLOsWise"  Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnResultCLOsWise_Click"/>
+                    <ComboBox Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" x:Name="cmbxResultClosWise" Width="161" Height="25" Background="White" BorderBrush="White" SelectionChanged="cmbxResultClosWise_SelectionChanged" />
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="1">
+                    <Label Content="Class Attendance" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnClassAttendance"  Content="Generate" Height="35" Background="#FF281E8C" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="2">
+                    <Label Content="Students Fail CLOs" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnStudentFailClos" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnStudentFailClos_Click"/>
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="3">
+                    <Label Content="Result Assessment Wise" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnResultAssignemntWise" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnResultAssignemntWise_Click"/>
+                    <ComboBox x:Name="cmbxResultAssessmentWise" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" Width="160" Height="25" SelectionChanged="cmbxResultAssessmentWise_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Row="1">
+                    <Label Content="Absent In Assignment" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnAbsentInAssignment" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="1" Grid.Row="1">
+                    <Label Content="Attendance Short" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnAttendanceShort" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="2" Grid.Row="1">
+                    <Label Content="Result Question Wise " Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnResultQuestionWise" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnResultQuestionWise_Click"/>
+                    <ComboBox x:Name="cmbxResultQuestionWise" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" Width="160" Height="25" SelectionChanged="cmbxResultQuestionWise_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="3" Grid.Row="1">
+                    <Label Content="Result Top 10 Student" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnTop10Students" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnTop10Students_Click"/>
+                </StackPanel>
+
+            </Grid>
+            <DataGrid x:Name="dgIndividual" Margin="0,0,0,0" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Result">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnResult" Content="Result" Click="btnResult_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Attendance">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="btnAttendance" Content="Attendance" Click="btnAttendance_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Margin="10,10,10,10" Background="#FFEEEDF1">
+            <Grid.RowDefinitions  >
+                <RowDefinition Height="102*"/>
+                <RowDefinition Height="78*"/>
+                <RowDefinition Height="44*"/>
+                <RowDefinition Height="44*"/>
+                <RowDefinition Height="170*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Background="#FF5046B9">
+                <StackPanel Height="100">
+                    <Label Content="Total Reports" FontWeight="Bold" FontSize="14" Foreground="White"/>
+                    <Label Content="10-Ten" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="0,78,0,0" Grid.RowSpan="2">
+                <StackPanel Height="100"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Label Content="Quick Actions" FontWeight="Bold" Height="43" Width="125" FontSize="16"/>
+                <Label Content="Do something quickly" Height="26" Width="125"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <Button x:Name="btnUpdateEvaluation" Content="Update Evaluation" Height="34" Background="#FFECF2FF" Click="btnUpdateEvaluation_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3">
+                <Button x:Name="btnMarkEvaluation" Content="Mark Evaluation" Height="34" Background="#FFECF2FF" Click="btnMarkEvaluation_Click"/>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </Window>

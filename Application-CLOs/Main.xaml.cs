@@ -49,7 +49,7 @@ namespace Application_CLOs
 
         private void btnResult_Click(object sender, RoutedEventArgs e)
         {
-            LoadForm(new AddStudentResult());
+            LoadForm(new StudentResultDashboard());
         }
 
         private void btnCLOs_Click(object sender, RoutedEventArgs e)

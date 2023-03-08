@@ -34,12 +34,17 @@ namespace Application_CLOs
         }
         private void bindDataGrid()
         {
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT R.ID,R.Details AS [Rubric Detail],C.Name AS [CLO Name]\r\nFROM Rubric R \r\nJOIN  Clo C\r\nON R.CloId=C.Id", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgRubric.ItemsSource = dt.DefaultView;
+            try
+            {
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd = new SqlCommand("SELECT R.ID,R.Details AS [Rubric Detail],C.Name AS [CLO Name]\r\nFROM Rubric R \r\nJOIN  Clo C\r\nON R.CloId=C.Id", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgRubric.ItemsSource = dt.DefaultView;
+            }
+            catch { }
+           
 
         }
         private void bindCLOName()
@@ -52,6 +57,7 @@ namespace Application_CLOs
                 // Add data to combo box
                 cmbxCLO.Items.Add(reader["Name"].ToString());
             }
+            reader.Close();
         }
         private void Window_Activated_1(object sender, EventArgs e)
         {

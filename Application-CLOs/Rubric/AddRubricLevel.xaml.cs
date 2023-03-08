@@ -36,12 +36,17 @@ namespace Application_CLOs
         }
         private void bindDataGrid()
         {
-            var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT RL.Id,RL.Details As [Rubric Detail],RL.MeasurementLevel AS [Marks],R.Details AS [Rubric Name],C.Name AS[CLO Name]\r\nFROM RubricLevel RL\r\nJOIN Rubric R\r\nON RL.RubricId=R.Id\r\nJOIN Clo C\r\nON C.Id=R.CloId", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgRubric.ItemsSource = dt.DefaultView;
+            try
+            {
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd = new SqlCommand("SELECT RL.Id,RL.Details As [Rubric Detail],RL.MeasurementLevel AS [Marks],R.Details AS [Rubric Name],C.Name AS[CLO Name]\r\nFROM RubricLevel RL\r\nJOIN Rubric R\r\nON RL.RubricId=R.Id\r\nJOIN Clo C\r\nON C.Id=R.CloId", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgRubric.ItemsSource = dt.DefaultView;
+            }
+            catch(Exception ex) { }
+           
 
         }
         private void bindRrubricName()

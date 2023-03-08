@@ -27,6 +27,7 @@ namespace Application_CLOs
         public ViewStudentForMarkeResult()
         {
             InitializeComponent();
+            bindDataGrid();
         }
         private void bindDataGrid()
         {

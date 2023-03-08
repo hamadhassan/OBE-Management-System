@@ -21,7 +21,6 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="1">
                 <TextBox x:Name="txtbxSearch" TextWrapping="Wrap" Width="425"/>
-                <Button Content="Button" Click="Button_Click"/>
             </StackPanel>
 
         </Grid>

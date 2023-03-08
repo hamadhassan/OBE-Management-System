@@ -1,4 +1,36 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM AssessmentComponent
+DECLARE @entered_marks INT = 1;
+DECLARE @AssessmentId INT = 1;
+DECLARE @existing_marks INT = (SELECT SUM(AC.TotalMarks) FROM Assessment A JOIN AssessmentComponent AC ON A.Id=AC.AssessmentId WHERE A.Id=@AssessmentId )
+
+DECLARE @SubUpdateMarks INT=(SELECT AC.TotalMarks FROM AssessmentComponent AC WHERE AC.Id=2)
+DECLARE @total_marks INT = (SELECT A.TotalMarks FROM Assessment A  WHERE A.Id=@AssessmentId)
+SELECT @total_marks
+
+IF (@existing_marks + @entered_marks <= @total_marks)
+    SELECT 'True';
+ELSE
+    SELECT 'False';
+
+SELECT * FROM LOOKUP
+
+
 --------------------------------------------------------------------------------
 SELECT  DISTINCT TOP 5 CONCAT(S.FirstName,' ',S.LastName)AS [Student Name],S.RegistrationNumber
 FROM Student S

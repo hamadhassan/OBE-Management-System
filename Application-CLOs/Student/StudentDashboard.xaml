@@ -94,7 +94,7 @@
                     <Label Content="Fail CLOs"/>
                 </StackPanel>
                 <StackPanel Grid.Row="2">
-                    <Label Content="Attendance Short"/>
+                    <Label Content="Assessment Wise Result"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Average Marks"/>

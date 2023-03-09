@@ -44,7 +44,7 @@ namespace Application_CLOs
 
         private void btnAttendance_Click(object sender, RoutedEventArgs e)
         {
-            LoadForm(new StudentAttendance());
+            LoadForm(new StudentAttendance(true));
         }
 
         private void btnResult_Click(object sender, RoutedEventArgs e)

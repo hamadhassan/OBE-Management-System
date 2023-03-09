@@ -39,18 +39,19 @@ namespace Application_CLOs
         {
             InitializeComponent();
             timer();
-            cmbxCategory.SelectedIndex = 0;
+            bindDataGrid();
         }
         public StudentAttendance(bool isForAllPresent)
         {
             InitializeComponent();
             this.isForAllPresent = isForAllPresent;
             timer();
-            cmbxCategory.SelectedIndex = 0;
+            bindDataGrid();
         }
         private void bindDataGrid()
         {
-            if (cmbxCategory.SelectedIndex == 0)
+            var date = Convert.ToDateTime(dateTimePicker.SelectedDate).ToString("yyyy-MM-dd");
+            if (date != null)
             {
                 var con = Configuration.getInstance().getConnection();
                 SqlCommand cmd = new SqlCommand("SELECT S.Id,CONCAT(S.FirstName,' ',S.LastName) AS [Student Name],S.RegistrationNumber \r\nFROM Student S \r\nJOIN Lookup L\r\nON L.LookupId=S.Status\r\nWHERE L.Category='STUDENT_STATUS' AND L.Name='Active'", con);
@@ -60,7 +61,7 @@ namespace Application_CLOs
                 dgAttendance.ItemsSource = dt.DefaultView;
                 if (dgAttendance.Columns.Count > 1)
                 {
-                    dgAttendance.Columns[3].Visibility = Visibility.Hidden;
+                    //dgAttendance.Columns[3].Visibility = Visibility.Hidden;
                 }
                 if (isForAllPresent)
                 {
@@ -72,105 +73,45 @@ namespace Application_CLOs
                     dgAttendance.Columns[1].Visibility = Visibility.Hidden;
                 }
             }
-            else
-            {
-               
-            }
-           
         }
         private void markInitialAttendance(string date,int attendanceStatus)
         {
-            if (cmbxCategory.SelectedIndex == 0)
-            {
-                var con = Configuration.getInstance().getConnection();
-                SqlCommand cmd1 = new SqlCommand("INSERT INTO ClassAttendance(AttendanceDate) VALUES(@CurrentDate)\r\nDECLARE @AttendanceStatus  INT = @Status\r\nDECLARE @ClassAttendanceID  INT = (SELECT TOP 1 CA.Id FROM ClassAttendance CA ORDER BY CA.ID DESC)\r\nDECLARE @Counter  BIGINT = 0\r\nDECLARE @RowCount BIGINT = 0\r\nSET @Counter=0\r\nSELECT @RowCount =Count(S.Id) FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active'\r\nWHILE ( @Counter < @RowCount)\r\nBEGIN\r\n\tDECLARE @idStudent as INT =(SELECT S.Id FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active' \r\n\tORDER BY S.Id OFFSET @Counter ROWS   FETCH NEXT 1 ROWS ONLY)\r\n\tINSERT INTO StudentAttendance(AttendanceId,StudentId,AttendanceStatus) VALUES(@ClassAttendanceID,@idStudent,@AttendanceStatus)\r\n    SET @Counter  = @Counter  + 1\r\nEND", con);
-                cmd1.Parameters.AddWithValue("@CurrentDate", date);
-                cmd1.Parameters.AddWithValue("@Status", attendanceStatus);
-                cmd1.ExecuteNonQuery();
-            }
-            else
-            {
-
-            }
+            var con = Configuration.getInstance().getConnection();
+            SqlCommand cmd1 = new SqlCommand("INSERT INTO ClassAttendance(AttendanceDate) VALUES(@CurrentDate)\r\nDECLARE @AttendanceStatus  INT = @Status\r\nDECLARE @ClassAttendanceID  INT = (SELECT TOP 1 CA.Id FROM ClassAttendance CA ORDER BY CA.ID DESC)\r\nDECLARE @Counter  BIGINT = 0\r\nDECLARE @RowCount BIGINT = 0\r\nSET @Counter=0\r\nSELECT @RowCount =Count(S.Id) FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active'\r\nWHILE ( @Counter < @RowCount)\r\nBEGIN\r\n\tDECLARE @idStudent as INT =(SELECT S.Id FROM Student S  JOIN Lookup L ON L.LookupId=S.Status  WHERE L.Category='STUDENT_STATUS' AND L.Name='Active' \r\n\tORDER BY S.Id OFFSET @Counter ROWS   FETCH NEXT 1 ROWS ONLY)\r\n\tINSERT INTO StudentAttendance(AttendanceId,StudentId,AttendanceStatus) VALUES(@ClassAttendanceID,@idStudent,@AttendanceStatus)\r\n    SET @Counter  = @Counter  + 1\r\nEND", con);
+            cmd1.Parameters.AddWithValue("@CurrentDate", date);
+            cmd1.Parameters.AddWithValue("@Status", attendanceStatus);
+            cmd1.ExecuteNonQuery();
         }
+      
         private void Window_Activated(object sender, EventArgs e)
         {
-            var date = Convert.ToDateTime(dateTimePicker.SelectedDate).ToString("yyyy-MM-dd");
-            if(cmbxCategory.SelectedIndex==1)
-            {
-                if (date != null)
-                {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("SELECT CONCAT(S.FirstName,' ',S.LastName)AS [Student Name],S.RegistrationNumber,L.Name AS Status,S.Id,SA.AttendanceId\r\nFROM Student S\r\nJOIN StudentAttendance SA\r\nON S.Id=SA.StudentId\r\nJOIN ClassAttendance CA\r\nON CA.Id=SA.AttendanceId\r\nJOIN Lookup L\r\nON L.LookupId=SA.AttendanceStatus\r\nWHERE CA.AttendanceDate=@Date\r\nORDER BY RegistrationNumber", con);
-                    cmd.Parameters.AddWithValue("@Date", date);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dgAttendance.ItemsSource = dt.DefaultView;
-                    if (dgAttendance.Columns.Count > 1)
-                    {
-                        dgAttendance.Columns[1].Visibility = Visibility.Hidden;
-                        dgAttendance.Columns[2].Visibility = Visibility.Hidden;
-                        dgAttendance.Columns[6].Visibility = Visibility.Hidden;
-                        dgAttendance.Columns[7].Visibility = Visibility.Hidden;
-                    }
-                }
-            }
         }
 
         private void btnMore_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbxCategory.SelectedIndex == 0)
+            if (dateTimePicker.SelectedDate != null)
             {
-                if (dateTimePicker.SelectedDate != null)
+                try
                 {
-                    try
-                    {
-                        DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-                        int studentId = int.Parse(dataRowView[0].ToString());
-                        StudentAttendanceMore studentAttendanceMore = new StudentAttendanceMore(studentId, classAttendanceID);
-                        studentAttendanceMore.ShowDialog();
-                    }
-                    catch
-                    {
-                        lblMessage.Content = "You are trying to access the wrong field";
-                    }
+                    DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+                    int studentId = int.Parse(dataRowView[0].ToString());
+                    StudentAttendanceMore studentAttendanceMore = new StudentAttendanceMore(studentId, classAttendanceID);
+                    studentAttendanceMore.ShowDialog();
                 }
-                else
+                catch
                 {
-                    lblMessage.Content = "Select the date";
+                    lblMessage.Content = "You are trying to access the wrong field";
                 }
             }
             else
             {
-                if (dateTimePicker.SelectedDate != null)
-                {
-                    try
-                    {
-                        DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-                        int studentId = int.Parse(dataRowView[3].ToString());
-                        int classAttendanceId = int.Parse(dataRowView[4].ToString());
-                        lblMessage.Content = studentId.ToString();
-                        StudentAttendanceMore studentAttendanceMore = new StudentAttendanceMore(studentId, classAttendanceId);
-                        studentAttendanceMore.ShowDialog();
-                    }
-                    catch
-                    {
-                        lblMessage.Content = "You are trying to access the wrong field";
-                    }
-                }
-                else
-                {
-                    lblMessage.Content = "Select the date";
-                }
+                lblMessage.Content = "Select the date";
             }
-          
         }
 
         private void btnAbsent_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbxCategory.SelectedIndex == 0)
-            {
+            
                 if (dateTimePicker.SelectedDate != null)
                 {
                     try
@@ -208,52 +149,48 @@ namespace Application_CLOs
                 {
                     lblMessage.Content = "Select the date";
                 }
-            }
             
         }
 
         private void btnPresent_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbxCategory.SelectedIndex == 0)
+           
+            if (dateTimePicker.SelectedDate != null)
             {
-                if (dateTimePicker.SelectedDate != null)
+                try
                 {
-                    try
+                    ////IF this button clicked then the mark absent 
+                    Button button = sender as Button;
+                    if (button != null)
                     {
-                        ////IF this button clicked then the mark absent 
-                        Button button = sender as Button;
-                        if (button != null)
+                        DataGridRow row = FindAncestor<DataGridRow>(button);
+                        var cell = FindVisualParent<DataGridCell>(button);
+                        if (row != null)
                         {
-                            DataGridRow row = FindAncestor<DataGridRow>(button);
-                            var cell = FindVisualParent<DataGridCell>(button);
-                            if (row != null)
-                            {
-                                DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-                                int studentId = int.Parse(dataRowView[0].ToString());
+                            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+                            int studentId = int.Parse(dataRowView[0].ToString());
 
-                                var con = Configuration.getInstance().getConnection();
-                                SqlCommand cmd1 = new SqlCommand("UPDATE StudentAttendance SET AttendanceStatus=@Status WHERE  AttendanceId=@ClassAttendanceID AND StudentId=@StudentID ", con);
-                                cmd1.Parameters.AddWithValue("@Status", 2);
-                                cmd1.Parameters.AddWithValue("@ClassAttendanceID", classAttendanceID);
-                                cmd1.Parameters.AddWithValue("@StudentID", studentId);
-                                cmd1.ExecuteNonQuery();
-                                lblMessage.Content = "Saved Successfully";
-                                button.Visibility = Visibility.Hidden;
-                                cell.IsEnabled = false;
-                            }
+                            var con = Configuration.getInstance().getConnection();
+                            SqlCommand cmd1 = new SqlCommand("UPDATE StudentAttendance SET AttendanceStatus=@Status WHERE  AttendanceId=@ClassAttendanceID AND StudentId=@StudentID ", con);
+                            cmd1.Parameters.AddWithValue("@Status", 2);
+                            cmd1.Parameters.AddWithValue("@ClassAttendanceID", classAttendanceID);
+                            cmd1.Parameters.AddWithValue("@StudentID", studentId);
+                            cmd1.ExecuteNonQuery();
+                            lblMessage.Content = "Saved Successfully";
+                            button.Visibility = Visibility.Hidden;
+                            cell.IsEnabled = false;
                         }
                     }
-                    catch
-                    {
-                        lblMessage.Content = "You are trying to access the wrong field";
-                    }
                 }
-                else
+                catch
                 {
-                    lblMessage.Content = "Select the date";
+                    lblMessage.Content = "You are trying to access the wrong field";
                 }
             }
-           
+            else
+            {
+                lblMessage.Content = "Select the date";
+            }
            
         }
         public T FindVisualParent<T>(DependencyObject child) where T : DependencyObject
@@ -280,13 +217,27 @@ namespace Application_CLOs
 
             return null;
         }
+        private bool isAttendanceExit()
+        {
+            var date = Convert.ToDateTime(dateTimePicker.SelectedDate).ToString("yyyy-MM-dd");
+            string query = "SELECT CT.Id FROM ClassAttendance CT WHERE CONVERT(date,  CT.AttendanceDate, 101)" +
+                "='"+date+"'";
+            var con = Configuration.getInstance().getConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            Object obj = cmd.ExecuteScalar();
+            if (obj == null)
+            {
+                return true;
+            }
+            return false;
+           
+        }
         private void dateTimePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var date = Convert.ToDateTime(dateTimePicker.SelectedDate).ToString("yyyy-MM-dd");
-            if (cmbxCategory.SelectedIndex == 0)
+            bindDataGrid();
+            if (isAttendanceExit())
             {
-                bindDataGrid();
-
                 if (isDateSelected)
                 {
                     if (isForAllPresent)
@@ -314,29 +265,9 @@ namespace Application_CLOs
             }
             else
             {
-                if (date != null)
-                {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("SELECT CONCAT(S.FirstName,' ',S.LastName)AS [Student Name],S.RegistrationNumber,L.Name AS Status,S.Id,SA.AttendanceId\r\nFROM Student S\r\nJOIN StudentAttendance SA\r\nON S.Id=SA.StudentId\r\nJOIN ClassAttendance CA\r\nON CA.Id=SA.AttendanceId\r\nJOIN Lookup L\r\nON L.LookupId=SA.AttendanceStatus\r\nWHERE CA.AttendanceDate=@Date\r\nORDER BY RegistrationNumber", con);
-                    cmd.Parameters.AddWithValue("@Date", date);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dgAttendance.ItemsSource = dt.DefaultView;
-                    if (dgAttendance.Columns.Count > 1)
-                    {
-                        dgAttendance.Columns[1].Visibility = Visibility.Hidden;
-                        dgAttendance.Columns[2].Visibility = Visibility.Hidden;
-                        dgAttendance.Columns[6].Visibility = Visibility.Hidden;
-                        dgAttendance.Columns[7].Visibility = Visibility.Hidden;
-                    }
-                }
-                else
-                {
-                    lblMessage.Content = "Select the date";
-                }
-               
+                lblMessage.Content = "Selected date attendance already exit";
             }
+          
            
         }
         private string queryData(string query)
@@ -374,9 +305,10 @@ namespace Application_CLOs
             lblMessage.Content = "";
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void btnUpdateAttendance_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            UpdateStudentAttendance updateStudentAttendance = new UpdateStudentAttendance();
+            updateStudentAttendance.ShowDialog();
         }
     }
 

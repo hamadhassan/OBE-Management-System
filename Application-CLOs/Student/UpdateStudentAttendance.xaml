@@ -1,11 +1,11 @@
-﻿<Window x:Class="Application_CLOs.StudentAttendance"
+﻿<Window x:Class="Application_CLOs.UpdateStudentAttendance"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application_CLOs"
         mc:Ignorable="d"
-        Title="StudentAttendance" Height="450" Width="800" Activated="Window_Activated" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="UpdateStudentAttendance" Height="450" Width="800" WindowStartupLocation="CenterScreen" Activated="Window_Activated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="59*"/>
@@ -26,23 +26,19 @@
             <StackPanel Grid.Column="3" Margin="0,29,0,0" Grid.RowSpan="2"/>
             <StackPanel Grid.Column="3"/>
             <StackPanel x:Name="dtClassAttendance" Grid.Column="2" Margin="0,29,0,0" Grid.RowSpan="2">
-                <DatePicker  x:Name="dateTimePicker" SelectedDateChanged="dateTimePicker_SelectedDateChanged" SelectedDateFormat="Long" Width="314" />
+                <DatePicker x:Name="dateTimePicker" SelectedDateChanged="dateTimePicker_SelectedDateChanged" SelectedDateFormat="Long" Width="314"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="0,29,0,0" Grid.RowSpan="2">
-                <Label x:Name="lblMode" Content="Date *"/>
+                <Label x:Name="lblMode" Content="Catgeory *"/>
             </StackPanel>
             <StackPanel Margin="0,29,0,0" Grid.RowSpan="2"/>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <Button Margin="0,2,0,0" x:Name="btnUpdateAttendance" Content="Update Attendance" Click="btnUpdateAttendance_Click" Width="315"/>
-                </StackPanel>
+                <StackPanel/>
             </Grid>
-            <StackPanel Grid.Column="1">
-                <Label x:Name="Attendance" Content="Attendance *"/>
-            </StackPanel>
+            <StackPanel Grid.Column="1"/>
         </Grid>
         <!--Data Gride Here-->
         <DataGrid CanUserAddRows="False" Name="dgAttendance" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,59,0,10" Grid.RowSpan="2">
@@ -54,20 +50,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Present">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnPresent" Content="Present" Click="btnPresent_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Absent">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnAbsent" Content="Absent" Click="btnAbsent_Click" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+              
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2">
@@ -78,7 +61,9 @@
             <StackPanel>
                 <Label x:Name="lblMessage" Content="" Foreground="#FFC82530"/>
             </StackPanel>
-            <StackPanel Grid.Column="1"/>
+            <StackPanel Grid.Column="1">
+                <Button x:Name="btnClose" Content="Close" Height="25" Width="100" Background="#FFC82530" Foreground="White" Click="btnClose_Click"/>
+            </StackPanel>
         </Grid>
 
     </Grid>

@@ -572,5 +572,85 @@ namespace Application_CLOs
 
             document.Close();
         }
+        public void GenerateClassAttendanceReport(SaveFileDialog saveFileDialog,string date)
+        {
+
+            Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(saveFileDialog.FileName, FileMode.Create));
+            document.AddCreationDate();
+            document.Open();
+            iTextSharp.text.Chunk space = new iTextSharp.text.Chunk(new VerticalPositionMark(), 50, true);
+            document.Add(space);
+
+            document.Add(space);
+
+            document.Add(ReportHeader());
+
+            document.Add(space);
+
+            document.Add(ReportSubHeader("Class Attendance Report"));
+
+            document.Add(ReportDate());
+            
+            document.Add(space);
+
+            //Date
+            PdfPTable Selecteddate = new PdfPTable(2);
+            Selecteddate.WidthPercentage = 100;
+            Selecteddate.SetWidths(new[] { 1f, 1f });
+
+            PdfPCell cell1Selecteddate = new PdfPCell(new Phrase("Attendance Date: "));
+            PdfPCell cell2Selecteddate = new PdfPCell(new Phrase(date));
+
+
+            cell1Selecteddate.Border = iTextSharp.text.Rectangle.NO_BORDER;
+            cell2Selecteddate.Border = iTextSharp.text.Rectangle.NO_BORDER;
+
+            Selecteddate.AddCell(cell1Selecteddate);
+            Selecteddate.AddCell(cell2Selecteddate);
+
+            document.Add(Selecteddate);
+
+
+
+
+            document.Add(space);
+
+            PdfPTable table = new PdfPTable(3);
+            table.TotalWidth = 100;
+            //table.SetWidths(new[] { 1f , 1f , 1f , 1f , 1f, 1f});
+            table.WidthPercentage = 100;
+            // Create the header cells
+            PdfPCell cell1 = new PdfPCell(new Phrase("Name", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+            PdfPCell cell2 = new PdfPCell(new Phrase("Registration Number", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+            PdfPCell cell3 = new PdfPCell(new Phrase("Status", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+
+            cell1.BackgroundColor = BaseColor.LIGHT_GRAY;
+            cell2.BackgroundColor = BaseColor.LIGHT_GRAY;
+            cell3.BackgroundColor = BaseColor.LIGHT_GRAY;
+
+            table.AddCell(cell1);
+            table.AddCell(cell2);
+            table.AddCell(cell3);
+
+
+            var con = Configuration.getInstance().getConnection();
+            string query = "SELECT CONCAT(S.FirstName,' ',S.LastName)AS Name,S.RegistrationNumber,L.Name\r\nFROM Student S\r\nJOIN StudentAttendance ST\r\nON S.Id=ST.StudentId\r\nJOIN ClassAttendance C\r\nON C.Id=ST.AttendanceId\r\nJOIN Lookup L\r\nON L.LookupId=ST.AttendanceStatus\r\nWHERE L.Category='ATTENDANCE_STATUS' " +
+                "AND C.AttendanceDate='"+date+"'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                table.AddCell(reader.GetString(0));
+                table.AddCell(reader.GetString(1));
+                table.AddCell(reader.GetString(2));
+            }
+            reader.Close();
+            document.Add(table);
+
+            document.Add(ReportFooter(document, writer));
+
+            document.Close();
+        }
     }
 }

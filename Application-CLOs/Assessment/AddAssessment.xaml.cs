@@ -36,11 +36,13 @@ namespace Application_CLOs
         private void bindDataGrid()
         {
             var con = Configuration.getInstance().getConnection();
-            SqlCommand cmd = new SqlCommand("SELECT *\r\nFROM Assessment", con);
+            SqlCommand cmd = new SqlCommand("SELECT A.Id,A.Title,A.DateCreated,A.TotalMarks,A.TotalWeightage FROM Assessment A\r\n", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgAssessment.ItemsSource = dt.DefaultView;
+            //dgAssessment.Columns[2].Visibility = Visibility.Hidden;
+            
 
         }
         private void Window_Activated_1(object sender, EventArgs e)

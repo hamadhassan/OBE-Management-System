@@ -1,10 +1,23 @@
 
+SELECT C.Name FROM CLO C
+SELECT C.Id FROM Clo C WHERE C.Name=
+
+SELECT * FROM Assessment A
+
+SELECT AC.Id FROM AssessmentComponent AC WHERE AC.Name=
+SELECT A.Id FROM Assessment A WHERE A.Title=
+INSERT INTO StudentResult VALUES (32,2,1,GETDATE())
 
 
+SELECT * FROM Student
 
+SELECT * FROM RubricLevel
 
+SELECT * FROM Assessment
 
+SELECT A.Id,A.Title,A.DateCreated,A.TotalMarks,A.TotalWeightage FROM Assessment A
 
+SELECT * FROM StudentResult
 
 
 

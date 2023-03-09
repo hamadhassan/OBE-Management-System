@@ -38,7 +38,7 @@ ON C.Id=R.CloId
 WHERE C.Id=2
 GROUP BY S.RegistrationNumber,A.Title,A.TotalMarks,C.Name
 ORDER BY C.Name ASC
------------------------------------CLO Fail--------------------------------------------------------------------------------
+-------------------------------8----CLO Fail--------------------------------------------------------------------------------
 
 SELECT CONCAT(Max(S.FirstName),' ',Max(S.LastName))AS [StudentName],S.RegistrationNumber,A.Title AS Assignment,A.TotalMarks,SUM((CAST (RL.MeasurementLevel AS float)/ML.MaxLevel)*AC.TotalMarks) AS [ObtainedMarks],
 C.Name AS [CLOName]
@@ -133,7 +133,15 @@ ON L.LookupId=ST.AttendanceStatus
 WHERE S.Id=29
 ORDER BY DATE DESC
 -----------------------Class Attendance----------------------
-SELECT  CONVERT(date,  C.AttendanceDate, 101) AS Date ,L.Name
+
+SELECT * FROM ClassAttendance
+
+Declare @StudentId As int=1
+--Total Attendance
+Declare @TotalClassAttendance As int =(SELECT COUNT(CT.Id)
+FROM ClassAttendance CT)
+--PresentStudentCount
+Declare @PresentCount As int=(SELECT COUNT(S.Id)AS PresentStudentCount
 FROM Student S
 JOIN StudentAttendance ST
 ON S.Id=ST.StudentId
@@ -141,4 +149,26 @@ JOIN ClassAttendance C
 ON C.Id=ST.AttendanceId
 JOIN Lookup L
 ON L.LookupId=ST.AttendanceStatus
-ORDER BY DATE DESC
+WHERE L.Category='ATTENDANCE_STATUS' AND L.Name='Present'AND ST.StudentId=@StudentId)
+--AbsentStudentCount
+DECLARE @AbsentCount as float=(SELECT COUNT(S.Id)AS AbsentStudentCount
+FROM Student S
+JOIN StudentAttendance ST
+ON S.Id=ST.StudentId
+JOIN ClassAttendance C
+ON C.Id=ST.AttendanceId
+JOIN Lookup L
+ON L.LookupId=ST.AttendanceStatus
+WHERE L.Category='ATTENDANCE_STATUS' AND L.Name<>'Present' AND ST.StudentId=@StudentId)
+
+SELECT @TotalClassAttendance,@AbsentCount,@PresentCount
+------------------------------------Class Attendnce==================================
+SELECT CONCAT(S.FirstName,' ',S.LastName)AS Name,S.RegistrationNumber,L.Name
+FROM Student S
+JOIN StudentAttendance ST
+ON S.Id=ST.StudentId
+JOIN ClassAttendance C
+ON C.Id=ST.AttendanceId
+JOIN Lookup L
+ON L.LookupId=ST.AttendanceStatus
+WHERE L.Category='ATTENDANCE_STATUS' AND C.AttendanceDate='2023-03-10 00:00:00.000'

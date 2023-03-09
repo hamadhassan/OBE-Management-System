@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Data;
+using Xceed.Wpf.Toolkit;
 
 namespace Application_CLOs
 {
@@ -30,6 +31,7 @@ namespace Application_CLOs
         private int cloId;
         private int assessmentId;
         private int assessmentComponentId;
+        private string date;
 
         public StudentResultDashboard()
         {
@@ -229,6 +231,28 @@ namespace Application_CLOs
             {
                 Reports.getInstance().GenerateFailCLOWiseResultReport(saveFileDialog,33);
             }
+        }
+
+        private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            date = Convert.ToDateTime(datePicker.SelectedDate).ToString("yyyy-MM-dd");
+        }
+
+        private void btnClassAttendance_Click(object sender, RoutedEventArgs e)
+        {
+            if (date != string.Empty)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Save PDF File";
+                saveFileDialog.ShowDialog();
+                if (saveFileDialog.FileName != "")
+                {
+                    Reports.getInstance().GenerateClassAttendanceReport(saveFileDialog, date);
+                }
+
+            }
+          
         }
     }
 }

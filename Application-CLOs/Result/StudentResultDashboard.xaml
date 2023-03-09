@@ -38,7 +38,8 @@
                 </StackPanel>
                 <StackPanel Background="#FF5046B9" Grid.Column="1">
                     <Label Content="Class Attendance" Height="39" FontWeight="Bold" Foreground="White"/>
-                    <Button x:Name="btnClassAttendance"  Content="Generate" Height="35" Background="#FF281E8C" Foreground="White"/>
+                    <Button x:Name="btnClassAttendance"  Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnClassAttendance_Click"/>
+                    <DatePicker x:Name="datePicker" SelectedDateChanged="datePicker_SelectedDateChanged"/>
                 </StackPanel>
                 <StackPanel Background="#FF5046B9" Grid.Column="2">
                     <Label Content="Students Fail CLOs" Height="39" FontWeight="Bold" Foreground="White"/>
@@ -50,22 +51,16 @@
                     <ComboBox x:Name="cmbxResultAssessmentWise" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" Width="160" Height="25" SelectionChanged="cmbxResultAssessmentWise_SelectionChanged"/>
                 </StackPanel>
                 <StackPanel Background="#FF5046B9" Grid.Row="1">
-                    <Label Content="Absent In Assignment" Height="39" FontWeight="Bold" Foreground="White"/>
-                    <Button x:Name="btnAbsentInAssignment" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White"/>
+                    <Label Content="Result Top 10 Student" Height="39" FontWeight="Bold" Foreground="White"/>
+                    <Button x:Name="btnTop10Students" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnTop10Students_Click"/>
                 </StackPanel>
                 <StackPanel Background="#FF5046B9" Grid.Column="1" Grid.Row="1">
-                    <Label Content="Attendance Short" Height="39" FontWeight="Bold" Foreground="White"/>
-                    <Button x:Name="btnAttendanceShort" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White"/>
-                </StackPanel>
-                <StackPanel Background="#FF5046B9" Grid.Column="2" Grid.Row="1">
                     <Label Content="Result Question Wise " Height="39" FontWeight="Bold" Foreground="White"/>
                     <Button x:Name="btnResultQuestionWise" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnResultQuestionWise_Click"/>
                     <ComboBox x:Name="cmbxResultQuestionWise" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" Width="160" Height="25" SelectionChanged="cmbxResultQuestionWise_SelectionChanged"/>
                 </StackPanel>
-                <StackPanel Background="#FF5046B9" Grid.Column="3" Grid.Row="1">
-                    <Label Content="Result Top 10 Student" Height="39" FontWeight="Bold" Foreground="White"/>
-                    <Button x:Name="btnTop10Students" Content="Generate" Height="35" Background="#FF281E8C" Foreground="White" Click="btnTop10Students_Click"/>
-                </StackPanel>
+                <StackPanel Background="#FF5046B9" Grid.Column="2" Grid.Row="1"/>
+                <StackPanel Background="#FF5046B9" Grid.Column="3" Grid.Row="1"/>
 
             </Grid>
             <DataGrid x:Name="dgIndividual" Margin="0,0,0,0" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
@@ -98,7 +93,7 @@
             <StackPanel Background="#FF5046B9">
                 <StackPanel Height="100">
                     <Label Content="Total Reports" FontWeight="Bold" FontSize="14" Foreground="White"/>
-                    <Label Content="10-Ten" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                    <Label Content="08-Eight" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="14"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="0,78,0,0" Grid.RowSpan="2">

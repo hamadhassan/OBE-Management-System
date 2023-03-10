@@ -1,0 +1,639 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.11.25) (preloaded format=pdflatex 2022.11.26)  10 MAR 2023 20:10
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./ProjectReport.tex
+(ProjectReport.tex
+LaTeX2e <2022-11-01>
+L3 programming layer <2022-11-02>
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cl
+s
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen140
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphi
+cx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval
+.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphi
+cs.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.s
+ty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\gr
+aphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pd
+ftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.
+sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2022/03/10 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen143
+\ar@mcellbox=\box51
+\extrarowheight=\dimen144
+\NC@list=\toks17
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box52
+)
+\TX@col@width=\dimen145
+\TX@old@table=\dimen146
+\TX@old@col=\dimen147
+\TX@target=\dimen148
+\TX@delta=\dimen149
+\TX@cols=\count193
+\TX@ftn=\toks18
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/blindtext\blind
+text.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.st
+y
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count194
+\c@Blindtext=\count195
+\c@blind@countparstart=\count196
+\blind@countxx=\count197
+\blindtext@numBlindtext=\count198
+\blind@countyy=\count199
+\c@blindlist=\count266
+\c@blindlistlevel=\count267
+\c@blindlist@level=\count268
+\blind@listitem=\count269
+\c@blind@listcount=\count270
+\c@blind@levelcount=\count271
+\blind@mathformula=\count272
+\blind@Mathformula=\count273
+\c@blind@randomcount=\count274
+\c@blind@randommax=\count275
+\c@blind@pangramcount=\count276
+\c@blind@pangrammax=\count277
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titles
+ec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box53
+\beforetitleunit=\skip51
+\aftertitleunit=\skip52
+\ttl@plus=\dimen150
+\ttl@minus=\dimen151
+\ttl@toksa=\toks19
+\titlewidth=\dimen152
+\titlewidthlast=\dimen153
+\titlewidthfirst=\dimen154
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.s
+ty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geomet
+ry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.
+sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.s
+ty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count278
+\Gm@cntv=\count279
+\c@Gm@tempcnt=\count280
+\Gm@bindingoffset=\dimen155
+\Gm@wd@mp=\dimen156
+\Gm@odd@mp=\dimen157
+\Gm@even@mp=\dimen158
+\Gm@layoutwidth=\dimen159
+\Gm@layoutheight=\dimen160
+\Gm@layouthoffset=\dimen161
+\Gm@layoutvoffset=\dimen162
+\Gm@dimlist=\toks22
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geomet
+ry.cfg))
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/ragged2e\ragged
+2e.sty
+Package: ragged2e 2022/11/13 v3.2 ragged2e Package
+\CenteringLeftskip=\skip53
+\RaggedLeftLeftskip=\skip54
+\RaggedRightLeftskip=\skip55
+\CenteringRightskip=\skip56
+\RaggedLeftRightskip=\skip57
+\RaggedRightRightskip=\skip58
+\CenteringParfillskip=\skip59
+\RaggedLeftParfillskip=\skip60
+\RaggedRightParfillskip=\skip61
+\JustifyingParfillskip=\skip62
+\CenteringParindent=\skip63
+\RaggedLeftParindent=\skip64
+\RaggedRightParindent=\skip65
+\JustifyingParindent=\skip66
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable
+.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip67
+\LTright=\skip68
+\LTpre=\skip69
+\LTpost=\skip70
+\LTchunksize=\count281
+\LTcapwidth=\dimen163
+\LT@head=\box54
+\LT@firsthead=\box55
+\LT@foot=\box56
+\LT@lastfoot=\box57
+\LT@gbox=\box58
+\LT@cols=\count282
+\LT@rows=\count283
+\c@LT@tables=\count284
+\c@LT@chunks=\count285
+\LT@p@ftn=\toks23
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/listings\listin
+gs.sty
+\lst@mode=\count286
+\lst@gtempboxa=\box59
+\lst@token=\toks24
+\lst@length=\count287
+\lst@currlwidth=\dimen164
+\lst@column=\count288
+\lst@pos=\count289
+\lst@lostspace=\dimen165
+\lst@width=\dimen166
+\lst@newlines=\count290
+\lst@lineno=\count291
+\lst@maxwidth=\dimen167
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmis
+c.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count292
+\lst@skipnumbers=\count293
+\lst@framebox=\box60
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/listings\listin
+gs.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.s
+ty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\co
+lor.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathco
+lor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count294
+\float@exts=\toks25
+\float@box=\box61
+\@float@everytoks=\toks26
+\@floatcapt=\box62
+)
+
+Package geometry Warning: Over-specification in `h'-direction.
+    `width' (483.69684pt) is ignored.
+
+
+Package geometry Warning: Over-specification in `v'-direction.
+    `height' (731.23582pt) is ignored.
+
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3bac
+kend-pdftex.def
+File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count295
+\l__pdf_internal_box=\box63
+) (ProjectReport.aux)
+\openout1 = `ProjectReport.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\sup
+p-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count296
+\scratchdimen=\dimen168
+\scratchbox=\box64
+\nofMPsegments=\count297
+\nofMParguments=\count298
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count299
+\MPscratchDim=\dimen169
+\MPnumerator=\count300
+\makeMPintoPDFobject=\count301
+\everyMPtoPDFconversion=\toks28
+)
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\ep
+stopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstop
+df-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(54.06023pt, 489.38742pt, 54.06023pt)
+* v-part:(T,H,B)=(54.06023pt, 736.92639pt, 54.06023pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=489.38742pt
+* \textheight=736.92639pt
+* \oddsidemargin=-18.20976pt
+* \evensidemargin=-18.20976pt
+* \topmargin=-55.20976pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\c@lstlisting=\count302
+<UETLogo.png, id=1, 1204.5pt x 1211.52625pt>
+File: UETLogo.png Graphic file (type png)
+<use UETLogo.png>
+Package pdftex.def Info: UETLogo.png  used on input line 32.
+(pdftex.def)             Requested size: 180.6672pt x 181.7211pt.
+[1
+
+{C:/Users/Hammad Hassan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./UE
+TLogo.png>] [1] (ProjectReport.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2.
+ [2])
+\tf@toc=\write3
+\openout3 = `ProjectReport.toc'.
+
+ [1] (ProjectReport.lof)
+\tf@lof=\write4
+\openout4 = `ProjectReport.lof'.
+
+ [2] [1]
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+[]|\OT1/cmr/m/n/12 UI (user in-ter-face)
+ []
+
+
+Overfull \hbox (3.05666pt too wide) in alignment at lines 116--126
+ [] [] 
+ []
+
+
+Overfull \hbox (3.05666pt too wide) in alignment at lines 128--143
+ [] [] 
+ []
+
+<DatabaseDesign.png, id=29, 549.55313pt x 342.5297pt>
+File: DatabaseDesign.png Graphic file (type png)
+<use DatabaseDesign.png>
+Package pdftex.def Info: DatabaseDesign.png  used on input line 149.
+(pdftex.def)             Requested size: 549.55179pt x 342.52885pt.
+
+Overfull \hbox (60.16437pt too wide) in paragraph at lines 149--150
+ [][] 
+ []
+
+[3] [4 <./DatabaseDesign.png>]
+<Student.png, id=38, 416.30531pt x 371.88937pt>
+File: Student.png Graphic file (type png)
+<use Student.png>
+Package pdftex.def Info: Student.png  used on input line 179.
+(pdftex.def)             Requested size: 416.30429pt x 371.88846pt.
+ [5]
+<Student Attendance.png, id=42, 271.76532pt x 767.11594pt>
+File: Student Attendance.png Graphic file (type png)
+<use Student Attendance.png>
+Package pdftex.def Info: Student Attendance.png  used on input line 187.
+(pdftex.def)             Requested size: 271.76465pt x 767.11406pt.
+ [6 <./Student.png>]
+Overfull \vbox (57.02098pt too high) has occurred while \output is active []
+
+
+[7 <./Student Attendance.png>]
+<Assessment.png, id=49, 416.30531pt x 371.88937pt>
+File: Assessment.png Graphic file (type png)
+<use Assessment.png>
+Package pdftex.def Info: Assessment.png  used on input line 196.
+(pdftex.def)             Requested size: 416.30429pt x 371.88846pt.
+<Assessment Component.png, id=50, 371.13657pt x 542.025pt>
+File: Assessment Component.png Graphic file (type png)
+<use Assessment Component.png>
+Package pdftex.def Info: Assessment Component.png  used on input line 204.
+(pdftex.def)             Requested size: 371.13565pt x 542.02367pt.
+ [8 <./Assessment.png>]
+<Rubric.jpg, id=55, 459.21562pt x 437.38406pt>
+File: Rubric.jpg Graphic file (type jpg)
+<use Rubric.jpg>
+Package pdftex.def Info: Rubric.jpg  used on input line 212.
+(pdftex.def)             Requested size: 459.2145pt x 437.38298pt.
+ [9 <./Assessment Component.png>]
+<Rubric Level.png, id=59, 459.21562pt x 437.38406pt>
+File: Rubric Level.png Graphic file (type png)
+<use Rubric Level.png>
+Package pdftex.def Info: Rubric Level.png  used on input line 220.
+(pdftex.def)             Requested size: 459.2145pt x 437.38298pt.
+ [10 <./Rubric.jpg>]
+<CLO.png, id=63, 416.30531pt x 371.88937pt>
+File: CLO.png Graphic file (type png)
+<use CLO.png>
+Package pdftex.def Info: CLO.png  used on input line 228.
+(pdftex.def)             Requested size: 416.30429pt x 371.88846pt.
+ [11 <./Rubric Level.png>]
+<Student Result.png, id=67, 371.13657pt x 542.025pt>
+File: Student Result.png Graphic file (type png)
+<use Student Result.png>
+Package pdftex.def Info: Student Result.png  used on input line 236.
+(pdftex.def)             Requested size: 371.13565pt x 542.02367pt.
+ [12 <./CLO.png>]
+<GUIViewStudent.png, id=71, 591.71063pt x 331.2375pt>
+File: GUIViewStudent.png Graphic file (type png)
+<use GUIViewStudent.png>
+Package pdftex.def Info: GUIViewStudent.png  used on input line 250.
+(pdftex.def)             Requested size: 473.36914pt x 264.99034pt.
+ [13 <./Student Result.png>]
+<GUIAddStudent.png, id=75, 688.07062pt x 381.67593pt>
+File: GUIAddStudent.png Graphic file (type png)
+<use GUIAddStudent.png>
+Package pdftex.def Info: GUIAddStudent.png  used on input line 257.
+(pdftex.def)             Requested size: 412.84555pt x 229.00732pt.
+<GUIAddAttendance.png, id=76, 1027.58907pt x 534.49687pt>
+File: GUIAddAttendance.png Graphic file (type png)
+<use GUIAddAttendance.png>
+Package pdftex.def Info: GUIAddAttendance.png  used on input line 268.
+(pdftex.def)             Requested size: 513.79327pt x 267.24777pt.
+
+Overfull \hbox (24.40585pt too wide) in paragraph at lines 268--269
+ [][] 
+ []
+
+[14 <./GUIViewStudent.png> <./GUIAddStudent.png>]
+<GUIUpdateAttendance.png, id=83, 592.46344pt x 316.18124pt>
+File: GUIUpdateAttendance.png Graphic file (type png)
+<use GUIUpdateAttendance.png>
+Package pdftex.def Info: GUIUpdateAttendance.png  used on input line 277.
+(pdftex.def)             Requested size: 473.97139pt x 252.94533pt.
+<GUIUpdateEditAttendance.png, id=84, 593.21625pt x 310.91156pt>
+File: GUIUpdateEditAttendance.png Graphic file (type png)
+<use GUIUpdateEditAttendance.png>
+Package pdftex.def Info: GUIUpdateEditAttendance.png  used on input line 287.
+(pdftex.def)             Requested size: 474.57364pt x 248.72957pt.
+ [15 <./GUIAddAttendance.png> <./GUIUpdateAttendance.png>]
+<GUIAssessment.png, id=90, 1028.34187pt x 532.23843pt>
+File: GUIAssessment.png Graphic file (type png)
+<use GUIAssessment.png>
+Package pdftex.def Info: GUIAssessment.png  used on input line 298.
+(pdftex.def)             Requested size: 514.16968pt x 266.11856pt.
+
+Overfull \hbox (24.78226pt too wide) in paragraph at lines 298--299
+ [][] 
+ []
+
+<GUIAssessmentComponent.png, id=91, 1024.57782pt x 536.0025pt>
+File: GUIAssessmentComponent.png Graphic file (type png)
+<use GUIAssessmentComponent.png>
+Package pdftex.def Info: GUIAssessmentComponent.png  used on input line 308.
+(pdftex.def)             Requested size: 512.28766pt x 268.0006pt.
+
+Overfull \hbox (22.90024pt too wide) in paragraph at lines 308--309
+ [][] 
+ []
+
+[16 <./GUIUpdateEditAttendance.png> <./GUIAssessment.png>]
+<GUIRubric.png, id=97, 1028.34187pt x 532.23843pt>
+File: GUIRubric.png Graphic file (type png)
+<use GUIRubric.png>
+Package pdftex.def Info: GUIRubric.png  used on input line 318.
+(pdftex.def)             Requested size: 514.16968pt x 266.11856pt.
+
+Overfull \hbox (24.78226pt too wide) in paragraph at lines 318--319
+ [][] 
+ []
+
+<GUIRubricLevel.png, id=98, 1028.34187pt x 532.99126pt>
+File: GUIRubricLevel.png Graphic file (type png)
+<use GUIRubricLevel.png>
+Package pdftex.def Info: GUIRubricLevel.png  used on input line 328.
+(pdftex.def)             Requested size: 514.16968pt x 266.49498pt.
+
+Overfull \hbox (24.78226pt too wide) in paragraph at lines 328--329
+ [][] 
+ []
+
+[17 <./GUIAssessmentComponent.png> <./GUIRubric.png>]
+<GUICLO.png, id=104, 1028.34187pt x 532.23843pt>
+File: GUICLO.png Graphic file (type png)
+<use GUICLO.png>
+Package pdftex.def Info: GUICLO.png  used on input line 338.
+(pdftex.def)             Requested size: 514.16968pt x 266.11856pt.
+
+Overfull \hbox (24.78226pt too wide) in paragraph at lines 338--339
+ [][] 
+ []
+
+<GUIResult.png, id=105, 1028.34187pt x 535.2497pt>
+File: GUIResult.png Graphic file (type png)
+<use GUIResult.png>
+Package pdftex.def Info: GUIResult.png  used on input line 347.
+(pdftex.def)             Requested size: 514.16968pt x 267.62419pt.
+
+Overfull \hbox (24.78226pt too wide) in paragraph at lines 347--348
+ [][] 
+ []
+
+[18 <./GUIRubricLevel.png> <./GUICLO.png>]
+(C:\Users\Hammad Hassan\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlan
+g1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 368.
+
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 368--369
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (20.71951pt too wide) in paragraph at lines 370--371
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.89938pt too wide) in paragraph at lines 382--383
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[19 <./GUIResult.png>]
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 410--411
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.89938pt too wide) in paragraph at lines 424--425
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (13.30945pt too wide) in paragraph at lines 432--433
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 438--439
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 440--441
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[20]
+Overfull \hbox (5.89938pt too wide) in paragraph at lines 451--452
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.89938pt too wide) in paragraph at lines 478--479
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 487--488
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[21]
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 501--502
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (42.9497pt too wide) in paragraph at lines 515--516
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.89938pt too wide) in paragraph at lines 528--529
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[22] [23] [24] (ProjectReport.aux) ) 
+Here is how much of TeX's memory you used:
+ 5286 strings out of 475284
+ 82633 string characters out of 2770292
+ 671478 words of memory out of 3000000
+ 26722 multiletter control sequences out of 15000+600000
+ 474326 words of font info for 45 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,11n,62p,1018b,1657s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ <C:\Users\Hammad Hassan\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Hammad Hassan/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Ha
+mmad Hassan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.
+pfb><C:/Users/Hammad Hassan/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmtt12.pfb>
+Output written on ProjectReport.pdf (29 pages, 620987 bytes).
+PDF statistics:
+ 150 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+

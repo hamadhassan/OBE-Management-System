@@ -1,6 +1,3 @@
-
-
-
 # Outcome Based Education Management System
 
 # Introduction
@@ -90,7 +87,9 @@ The system used the following language, packages, and an Integrated
 development environment.\
 
      C \# (7.3)
+
 ------------------------------- ---------------------------------------
+
   IDE                                        Microsoft Visual Studio 2022
   Package                               iTextSharp (5.5.13.3)
   Framework                                        .Net framework (4.7.2)
@@ -103,7 +102,9 @@ development environment.\
 ## System Requirement
 
     Multicore Intel® or AMD processor (2 GHz or faster processor with SSE 4.2 or later) with 64-bit support
+
 -------------------- ---------------------------------------------------------------------------------------------------------
+
   Operating system                                                                                                     Windows 8
   RAM                                                                                                                       4 GB
   Monitor resolution                                                                                   1280 x 800 display at 100
@@ -116,7 +117,8 @@ To run Outcome Based Education Management System, your computer must meet the mi
 
 Type Here
 
-![DatabaseDesign](DatabaseDesign.png)
+![DatabaseDesign](https://user-images.githubusercontent.com/96945594/228835265-2ece4657-1933-43ee-838a-d13ad8e74630.PNG)
+
 
 ## Student
 
@@ -190,25 +192,26 @@ implementation, and testing phases of software development.
 
 ## Student Management
 
-![Manage the students](Student.png)
+![Student](https://user-images.githubusercontent.com/96945594/228835245-70b804e9-0137-41ed-9831-77b54831e243.png)
+
 
 ## Attendance Management
 
 
-
-![Manage the attendance](Student Attendance.png)
+![Student Attendance](https://user-images.githubusercontent.com/96945594/228835232-57a4a927-4d5f-473b-85a3-34df429620aa.png)
 
 ## Assessment Management
 
-![Manage the assessment](Assessment.png)
+![Assessment](https://user-images.githubusercontent.com/96945594/228835256-60b481e7-6537-44ab-9c79-2bb5ba8ee2bb.png)
+
 
 ## Assessment Component Management
 
-![Manage the assessment component](Assessment Component.png)
-
+![Assessment Component](https://user-images.githubusercontent.com/96945594/228835250-a3f5099f-75ba-4623-b51e-f0d8e24cab44.png)
 ## Rubric Management
 
-![Manage the rubric](Rubric.jpg)
+![Rubric](https://user-images.githubusercontent.com/96945594/228835228-8bc18810-fdce-4b0b-9077-3e18eaab5957.jpg)
+
 
 ## Rubric Level Management
 
@@ -219,14 +222,13 @@ implementation, and testing phases of software development.
 ## CLO Management
 
 
-
-![Manage the clo](CLO.png)
+![CLO](https://user-images.githubusercontent.com/96945594/228835261-d8e7d4ce-a6e4-466f-8a58-4986b4641dce.png)
 
 ## Student Result Management
 
 
+![Student Result](https://user-images.githubusercontent.com/96945594/228835238-18f0829e-6b51-484f-8675-53ed14f9a41a.png)
 
-![Manage the student result](Student Result.png)
 
 # Graphical User Interface
 
@@ -236,63 +238,59 @@ implementation, and testing phases of software development.
 
 ### Edit and Delete Student
 
-![Edit and delete the student page](GUIViewStudent.png)
+![GUIViewStudent](https://user-images.githubusercontent.com/96945594/228835935-fa80938c-cc21-43e0-bb2b-19b5d7d61722.PNG)
 
 ### Update and Add Student
 
-![Add and update student info page](GUIAddStudent.png)
+![GUIAddStudent](https://user-images.githubusercontent.com/96945594/228835275-def7d913-b234-4072-98ef-9c3600fe155e.PNG)
 
 ## Attendance Management
 
 ### Mark Attendance
+![GUIAddAttendance](https://user-images.githubusercontent.com/96945594/228835271-c2e25444-53c9-40bd-96e7-f60cc8b7533a.PNG)
 
-![Mark the student attendance page](GUIAddAttendance.png)
 
 ### View Attendance
-
-![View the mark student attendance page](GUIUpdateAttendance.png)
-
+![GUIUpdateAttendance](https://user-images.githubusercontent.com/96945594/228837696-0c93d967-38c3-4a9b-be6d-6dfcd60e015f.PNG)
 ### Update Attendance
 
-![Update the mark student attendance page](GUIUpdateEditAttendance.png)
-
+![GUIUpdateEditAttendance](https://user-images.githubusercontent.com/96945594/228837784-627d907c-d972-43b4-b393-932ee450655c.PNG)
 ## Assessment Management
 
-Type Here
+![GUIAssessment](https://user-images.githubusercontent.com/96945594/228835284-3dce2c2c-48c6-4572-860e-884f8ce73978.PNG)
 
-![View, create, update and delete the assessment page](GUIAssessment.png)
 
 ## Assessment Component Management
 
 
 
-![View, create, update and delete the assessment component
-page](GUIAssessmentComponent.png)
+![GUIAssessmentComponent](https://user-images.githubusercontent.com/96945594/228838086-0be3700f-7180-42c9-b528-c5cb89a2e1a6.PNG)
+
 
 ## Rubric Management
 
 Type Here
 
-![View, create, update and delete the rubric page](GUIRubric.png)
+![GUIRubric](https://user-images.githubusercontent.com/96945594/228835312-a775712a-1c6e-476c-bb48-c139dd4d4984.PNG)
+
 
 ## Rubric Level Management
 
 
+![GUIRubricLevel](https://user-images.githubusercontent.com/96945594/228838185-459a68a7-bcd6-4072-a7f1-acc245e030d2.PNG)
 
-![View, create, update and delete the rubric level page](GUIRubricLevel.png)
 
 ## CLO Management
 
 
+![GUICLO](https://user-images.githubusercontent.com/96945594/228835301-93eb1410-8fd5-448f-aeba-a8a0480d5435.PNG)
 
-![View, create, update and delete the clo page](GUICLO.png)
 
 ## Student Result Management
 
 
+![GUIResult](https://user-images.githubusercontent.com/96945594/228835306-6df033e1-0de4-4f85-a3bb-dc15a76896f1.PNG)
 
-![View and mark the evaluation and generate different reports
-page](GUIResult.png)
 
 
 
